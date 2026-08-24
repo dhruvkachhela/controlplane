@@ -37,9 +37,10 @@ class Settings:
         # Load the environment variables from the file into os.environ
         # python-dotenv parses KEY=VALUE pairs from the .env file
         if env_file_path is not None:
-            load_dotenv(dotenv_path=env_file_path, override=True)
+            load_dotenv(dotenv_path=env_file_path, override=False)
         else:
-            load_dotenv(override=True)
+            load_dotenv(override=False)
+
 
         # NVIDIA NIM / Llama 3.1 8B configuration
         self.nvidia_api_key: str = os.getenv("NVIDIA_API_KEY", "")
