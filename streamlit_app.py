@@ -385,14 +385,39 @@ def main() -> None:
         st.info(output_payload.final_text)
 
         # Performance & Telemetry
-        st.markdown("#### Performance and Economic Telemetry")
+        st.markdown("#### Real-Time Performance and Dynamic Economic Telemetry")
         metric_col1, metric_col2, metric_col3 = st.columns(3)
         with metric_col1:
-            st.metric(label="Total Latency", value=f"{output_payload.latency_seconds:.3f} s")
+            st.metric(label="Total Processing Latency", value=f"{output_payload.latency_seconds:.3f} s")
         with metric_col2:
-            st.metric(label="Compute Cost Savings", value=f"{output_payload.cost_savings_pct:.1f}%")
+            st.metric(
+                label="Tokens (Prompt / Completion)",
+                value=f"{output_payload.total_tokens} tokens",
+                delta=f"{output_payload.prompt_tokens} in / {output_payload.completion_tokens} out",
+            )
         with metric_col3:
-            st.metric(label="Request Identifier", value=output_payload.request_id[:13] + "...")
+            st.metric(label="Request Correlation ID", value=output_payload.request_id[:13] + "...")
+
+        cost_col1, cost_col2, cost_col3 = st.columns(3)
+        with cost_col1:
+            st.metric(
+                label="ControlPlane Compute Cost (SLM)",
+                value=f"${output_payload.actual_cost_usd:.6f}",
+                delta="Llama 3.1 8B @ $0.18/1M",
+            )
+        with cost_col2:
+            st.metric(
+                label="Frontier LLM Equivalent Cost",
+                value=f"${output_payload.frontier_cost_usd:.6f}",
+                delta="GPT-4o / Claude 3.5 baseline",
+            )
+        with cost_col3:
+            st.metric(
+                label="Net Compute Cost Savings",
+                value=f"{output_payload.cost_savings_pct:.1f}%",
+                delta=f"${output_payload.net_dollar_savings:.6f} saved",
+            )
+
 
         with st.expander("Audit Trail Details and Execution History", expanded=False):
             st.json(output_payload.audit_trail)

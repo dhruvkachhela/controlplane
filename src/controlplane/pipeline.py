@@ -14,8 +14,9 @@ import time
 import uuid
 from typing import Dict, List, Optional
 
-from controlplane.agent_interface import AgentInterface
+from controlplane.agent_interface import AgentInterface, estimate_tokens
 from controlplane.config import Settings, get_settings
+
 from controlplane.models import (
     AgentResponse,
     BiasResult,
@@ -136,6 +137,8 @@ class ControlPlanePipeline:
         if risk_assessment.is_blocked or risk_assessment.risk_tier == RiskTier.HIGH:
             total_duration: float = time.time() - start_time
             audit_trail["decision"] = "BLOCKED_HIGH_RISK"
+            est_tokens: int = estimate_tokens(raw_query)
+            frontier_cost: float = est_tokens * (10.0 / 1_000_000.0)
             return FinalOutput(
                 request_id=active_request_id,
                 final_text=f"Request blocked by ControlPlane: {risk_assessment.reason}",
@@ -145,6 +148,13 @@ class ControlPlanePipeline:
                 masked_query=masked_request.masked_query,
                 risk_assessment=risk_assessment,
                 latency_seconds=total_duration,
+                prompt_tokens=est_tokens,
+                completion_tokens=0,
+                total_tokens=est_tokens,
+                actual_cost_usd=0.0,
+                frontier_cost_usd=frontier_cost,
+                net_dollar_savings=frontier_cost,
+                cost_savings_pct=100.0,
                 audit_trail=audit_trail,
             )
 
@@ -163,6 +173,8 @@ class ControlPlanePipeline:
                 f"Escalated for clarification: {context_eval.missing_info_reason} "
                 f"Suggested follow-up: {context_eval.suggested_followup}"
             )
+            est_tokens = estimate_tokens(raw_query)
+            frontier_cost = est_tokens * (10.0 / 1_000_000.0)
             return FinalOutput(
                 request_id=active_request_id,
                 final_text=escalation_message,
@@ -172,8 +184,16 @@ class ControlPlanePipeline:
                 masked_query=masked_request.masked_query,
                 risk_assessment=risk_assessment,
                 latency_seconds=total_duration,
+                prompt_tokens=est_tokens,
+                completion_tokens=0,
+                total_tokens=est_tokens,
+                actual_cost_usd=0.0,
+                frontier_cost_usd=frontier_cost,
+                net_dollar_savings=frontier_cost,
+                cost_savings_pct=100.0,
                 audit_trail=audit_trail,
             )
+
 
         rewritten: RewrittenQuery = rewrite_query(
             masked_request,
@@ -243,6 +263,11 @@ class ControlPlanePipeline:
                 f"Critic: {last_critic_result.explanation if last_critic_result else 'None'}. "
                 f"Bias Checker: {last_bias_result.explanation if last_bias_result else 'None'}."
             )
+            total_prompt_toks: int = last_agent_response.prompt_tokens if last_agent_response else estimate_tokens(raw_query)
+            total_comp_toks: int = last_agent_response.completion_tokens if last_agent_response else 0
+            act_cost: float = last_agent_response.cost_estimate if last_agent_response else 0.0
+            front_cost: float = (total_prompt_toks * 0.000005) + (total_comp_toks * 0.000015)
+            savings_pct: float = ((front_cost - act_cost) / front_cost * 100.0) if front_cost > 0 else 52.9
             return FinalOutput(
                 request_id=active_request_id,
                 final_text=escalation_message,
@@ -252,6 +277,13 @@ class ControlPlanePipeline:
                 masked_query=masked_request.masked_query,
                 risk_assessment=risk_assessment,
                 latency_seconds=total_duration,
+                prompt_tokens=total_prompt_toks,
+                completion_tokens=total_comp_toks,
+                total_tokens=total_prompt_toks + total_comp_toks,
+                actual_cost_usd=act_cost,
+                frontier_cost_usd=front_cost,
+                net_dollar_savings=max(0.0, front_cost - act_cost),
+                cost_savings_pct=savings_pct,
                 audit_trail=audit_trail,
             )
 
@@ -266,6 +298,18 @@ class ControlPlanePipeline:
 
         total_duration = time.time() - start_time
 
+        prompt_toks: int = last_agent_response.prompt_tokens
+        comp_toks: int = last_agent_response.completion_tokens
+        tot_toks: int = last_agent_response.total_tokens
+        act_cost_usd: float = last_agent_response.cost_estimate
+        # Frontier model baseline pricing: $5/1M input, $15/1M output
+        front_cost_usd: float = (prompt_toks * 0.000005) + (comp_toks * 0.000015)
+        # Avoid division by zero
+        if front_cost_usd <= 0.0:
+            front_cost_usd = 0.00001
+        savings_pct_calc: float = max(0.0, min(100.0, ((front_cost_usd - act_cost_usd) / front_cost_usd) * 100.0))
+        net_saved: float = max(0.0, front_cost_usd - act_cost_usd)
+
         final_result: FinalOutput = FinalOutput(
             request_id=active_request_id,
             final_text=decrypted_response,
@@ -276,7 +320,15 @@ class ControlPlanePipeline:
             rewritten_query=rewritten.rewritten_query,
             risk_assessment=risk_assessment,
             latency_seconds=total_duration,
+            prompt_tokens=prompt_toks,
+            completion_tokens=comp_toks,
+            total_tokens=tot_toks,
+            actual_cost_usd=act_cost_usd,
+            frontier_cost_usd=front_cost_usd,
+            net_dollar_savings=net_saved,
+            cost_savings_pct=savings_pct_calc,
             audit_trail=audit_trail,
         )
         return final_result
+
 

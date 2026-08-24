@@ -58,8 +58,11 @@ def test_e2e_happy_path_with_pii_restoration() -> None:
     assert "respond" in output.audit_trail
 
     # 4. Cost savings and latency metrics
-    assert output.cost_savings_pct == 52.9
+    assert output.cost_savings_pct > 0.0
+    assert output.actual_cost_usd >= 0.0
+    assert output.frontier_cost_usd > output.actual_cost_usd
     assert output.latency_seconds >= 0.0
+
 
 
 def test_e2e_high_risk_prompt_injection_blocked() -> None:
