@@ -340,9 +340,11 @@ def main() -> None:
                 else:
                     st.success("CONTEXT ASSESSMENT: SUFFICIENT - ACTION: PROCEED")
 
-                st.markdown("**Tool-Aware Optimized Prompt:**")
-                st.code(output_payload.masked_query, language="text")
-                st.caption(f"Prepare Log: {output_payload.audit_trail.get('prepare', 'Not executed')}")
+                st.markdown("**Tool-Aware Optimized Prompt (Enhanced):**")
+                display_prompt: str = output_payload.rewritten_query if output_payload.rewritten_query else output_payload.masked_query
+                st.code(display_prompt, language="text")
+                st.caption(f"Enhancement Details: {output_payload.audit_trail.get('prepare', 'Not executed')}")
+
 
         st.divider()
         col_exec_stage, col_eval_stage = st.columns(2)

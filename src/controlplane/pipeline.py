@@ -273,8 +273,10 @@ class ControlPlanePipeline:
             block_reason=None,
             original_query=raw_query,
             masked_query=masked_request.masked_query,
+            rewritten_query=rewritten.rewritten_query,
             risk_assessment=risk_assessment,
             latency_seconds=total_duration,
             audit_trail=audit_trail,
         )
         return final_result
+

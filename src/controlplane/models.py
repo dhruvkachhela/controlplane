@@ -157,7 +157,9 @@ class FinalOutput(BaseModel):
     block_reason: Optional[str] = Field(default=None, description="Reason for blocking if the request was blocked.")
     original_query: str = Field(description="The original user query text.")
     masked_query: str = Field(description="The masked query text used internally.")
+    rewritten_query: Optional[str] = Field(default=None, description="The tool-aware compressed and enhanced query text produced in Stage 2.")
     risk_assessment: RiskAssessment = Field(description="The risk evaluation performed on the input.")
     latency_seconds: float = Field(default=0.0, description="Total end-to-end processing latency.")
     cost_savings_pct: float = Field(default=52.9, description="Estimated cost savings percentage compared to un-guarded frontier models.")
     audit_trail: Dict[str, str] = Field(default_factory=dict, description="Audit log mapping each pipeline stage to its status summary.")
+
