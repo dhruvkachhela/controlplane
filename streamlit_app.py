@@ -257,6 +257,31 @@ def inject_custom_css() -> None:
             background-color: transparent !important;
         }
         
+        /* Delivered Response Container */
+        .response-container {
+            background-color: #111726;
+            border: 1px solid #1f293d;
+            border-left: 4px solid #38bdf8;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin-top: 10px;
+            margin-bottom: 14px;
+        }
+        .response-header {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: #38bdf8 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+        .response-text {
+            font-size: 1.00rem;
+            line-height: 1.55;
+            color: #ffffff !important;
+            font-weight: 400;
+        }
+        
         /* Metric Cards */
         .metric-card {
             background-color: #111726;
@@ -714,7 +739,15 @@ def main() -> None:
         else:
             st.success(status_label)
 
-        st.markdown(f"**Delivered Output:**\n\n{output_payload.final_text}")
+        st.markdown(
+            f"""
+            <div class="response-container">
+                <div class="response-header">Delivered Agent Output (Safe Post-Validation Response)</div>
+                <div class="response-text">{output_payload.final_text}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
         # Section 4: Stage Detail Inspector
         st.markdown('<div class="section-label">4. Guardrail Evidence and Audit Trail</div>', unsafe_allow_html=True)
