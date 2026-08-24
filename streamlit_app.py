@@ -246,6 +246,7 @@ def inject_custom_css() -> None:
         /* Toggle Switch & Checkbox Visibility */
         div[data-baseweb="checkbox"] > div:first-child,
         div[data-testid="stToggle"] > div:first-child,
+        button[role="menuitemcheckbox"] div:first-of-type,
         [role="switch"] {
             background-color: #334155 !important;
             border: 1px solid #475569 !important;
@@ -253,6 +254,7 @@ def inject_custom_css() -> None:
         }
         div[data-baseweb="checkbox"][aria-checked="true"] > div:first-child,
         div[data-testid="stToggle"][aria-checked="true"] > div:first-child,
+        button[role="menuitemcheckbox"][aria-checked="true"] div:first-of-type,
         [role="switch"][aria-checked="true"] {
             background-color: #2563eb !important;
             border-color: #3b82f6 !important;
@@ -261,6 +263,7 @@ def inject_custom_css() -> None:
         /* Toggle Knob (Thumb) */
         div[data-baseweb="checkbox"] > div:first-child > div,
         div[data-testid="stToggle"] > div:first-child > div,
+        button[role="menuitemcheckbox"] div:first-of-type > div,
         [role="switch"] > div {
             background-color: #ffffff !important;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
