@@ -156,15 +156,38 @@ def inject_custom_css() -> None:
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
-        /* Global typography and crisp high-contrast color */
-        html, body, [class*="css"], p, span, div, label, li, a, h1, h2, h3, h4, h5, h6 {
+        /* Global typography */
+        .stApp {
+            background-color: #0b0f19 !important;
+            color: #e2e8f0 !important;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .stApp p, .stApp span, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6, .stApp li {
             color: #e2e8f0 !important;
         }
         
-        /* Main canvas background */
-        .stApp {
+        /* Top Header Bar */
+        header[data-testid="stHeader"] {
             background-color: #0b0f19 !important;
+        }
+        header[data-testid="stHeader"] * {
+            color: #cbd5e1 !important;
+            fill: #cbd5e1 !important;
+        }
+        header[data-testid="stHeader"] button:hover {
+            color: #ffffff !important;
+        }
+        
+        /* Streamlit Native Main Menu Popover */
+        div[data-testid="stMainMenuPopover"], 
+        div[data-testid="stMainMenuPopover"] * {
+            background-color: #111726 !important;
+            color: #e2e8f0 !important;
+        }
+        div[data-testid="stMainMenuPopover"] button:hover {
+            background-color: #1e293b !important;
+            color: #38bdf8 !important;
         }
         
         /* Sidebar styling */
