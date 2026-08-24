@@ -227,20 +227,32 @@ def inject_custom_css() -> None:
             font-weight: 500 !important;
         }
         
-        /* Dropdown popover menu */
-        div[data-baseweb="popover"], ul[data-baseweb="menu"] {
+        /* Dropdown popover menu and options */
+        div[data-baseweb="popover"], 
+        div[data-baseweb="popover"] div, 
+        ul[data-baseweb="menu"], 
+        ul[role="listbox"],
+        div[role="listbox"] {
             background-color: #111726 !important;
             border: 1px solid #2d3748 !important;
         }
-        li[data-baseweb="option"] {
+        li[data-baseweb="option"],
+        li[role="option"],
+        div[role="option"] {
             background-color: #111726 !important;
-            color: #e2e8f0 !important;
+            color: #ffffff !important;
         }
-        li[data-baseweb="option"]:hover, li[aria-selected="true"] {
+        li[data-baseweb="option"]:hover, 
+        li[role="option"]:hover,
+        li[aria-selected="true"],
+        div[role="option"]:hover,
+        div[aria-selected="true"] {
             background-color: #1e293b !important;
             color: #38bdf8 !important;
         }
-        li[data-baseweb="option"] * {
+        li[data-baseweb="option"] *,
+        li[role="option"] *,
+        div[role="option"] * {
             color: inherit !important;
             background-color: transparent !important;
         }
