@@ -35,11 +35,17 @@ class Settings:
             None
         """
         # Load the environment variables from the file into os.environ
-        # python-dotenv parses KEY=VALUE pairs from the .env file
+        # Search explicit path, current working directory, and controlplane package root
         if env_file_path is not None:
             load_dotenv(dotenv_path=env_file_path, override=False)
         else:
+            # Check current working directory .env
             load_dotenv(override=False)
+            # Also check controlplane project root .env
+            project_env = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".env")
+            if os.path.isfile(project_env):
+                load_dotenv(dotenv_path=project_env, override=False)
+
 
 
         # NVIDIA NIM / Llama 3.1 8B configuration

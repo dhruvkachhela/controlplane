@@ -32,10 +32,15 @@ def test_demo_presets_structure() -> None:
     """
     assert len(DEMO_PRESETS) >= 4
     for preset_key, preset_data in DEMO_PRESETS.items():
+        assert "short_title" in preset_data
         assert "name" in preset_data
+        assert "objective" in preset_data
+        assert "threat_mitigated" in preset_data
+        assert "expected_path" in preset_data
         assert "query" in preset_data
         assert "expected_outcome" in preset_data
         assert len(preset_data["query"]) > 0
+
 
 
 def test_get_status_badge_helper() -> None:
