@@ -209,13 +209,40 @@ def inject_custom_css() -> None:
             font-weight: 600 !important;
         }
         
-        /* Selectbox and dropdown visibility */
-        .stSelectbox div, .stSelectbox span, .stSelectbox [data-baseweb="select"] *, div[data-baseweb="popover"] * {
-            color: #f8fafc !important;
-            background-color: #111726 !important;
-        }
+        /* Selectbox and dropdown menu visibility */
         div[data-baseweb="select"] {
-            border: 1px solid #1f293d !important;
+            background-color: #111726 !important;
+            border: 1px solid #2d3748 !important;
+            border-radius: 4px !important;
+        }
+        div[data-baseweb="select"] > div {
+            background-color: #111726 !important;
+            color: #ffffff !important;
+        }
+        div[data-baseweb="select"] * {
+            color: #ffffff !important;
+        }
+        div[data-baseweb="select"] span {
+            color: #ffffff !important;
+            font-weight: 500 !important;
+        }
+        
+        /* Dropdown popover menu */
+        div[data-baseweb="popover"], ul[data-baseweb="menu"] {
+            background-color: #111726 !important;
+            border: 1px solid #2d3748 !important;
+        }
+        li[data-baseweb="option"] {
+            background-color: #111726 !important;
+            color: #e2e8f0 !important;
+        }
+        li[data-baseweb="option"]:hover, li[aria-selected="true"] {
+            background-color: #1e293b !important;
+            color: #38bdf8 !important;
+        }
+        li[data-baseweb="option"] * {
+            color: inherit !important;
+            background-color: transparent !important;
         }
         
         /* Metric Cards */
