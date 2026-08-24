@@ -301,3 +301,48 @@ def test_pipeline_smoke_run() -> None:
     assert "prepare" in output.audit_trail
 
 
+def test_axi_bridge_stub() -> None:
+
+    """
+    Test that the AXI Bridge architectural stub dispatches tool calls and logs traceably.
+    
+    Parameters:
+        None
+        
+    Returns:
+        None
+    """
+    from controlplane.axi_bridge import AXIBridgeStub
+    from controlplane.models import ToolDefinition
+
+    bridge = AXIBridgeStub(bridge_name="test-erp-bridge")
+    assert bridge.is_connected is True
+
+    tool = ToolDefinition(name="erp_invoice_query", description="Query invoices", parameters={})
+    result = bridge.dispatch_tool_call(tool=tool, parameters={"id": "INV-101"}, request_id="req-axi-01")
+    assert result["status"] == "success"
+    assert result["tool_name"] == "erp_invoice_query"
+    assert result["bridge"] == "test-erp-bridge"
+
+
+def test_dynamic_sampling_modulator_stub() -> None:
+    """
+    Test that the Dynamic Sampling Modulator architectural stub routes queries to full deep audit.
+    
+    Parameters:
+        None
+        
+    Returns:
+        None
+    """
+    from controlplane.sampling import DynamicSamplingModulatorStub
+    from controlplane.models import RiskTier
+
+    modulator = DynamicSamplingModulatorStub(baseline_rate=1.0)
+    assert modulator.baseline_rate == 1.0
+
+    should_audit = modulator.should_sample_for_deep_audit(risk_tier=RiskTier.LOW, request_id="req-samp-01")
+    assert should_audit is True
+
+
+
