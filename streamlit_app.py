@@ -220,9 +220,14 @@ def inject_custom_css() -> None:
         }
         
         /* Streamlit Native Main Menu Popover */
-        div[data-testid="stMainMenuPopover"], 
-        div[data-testid="stMainMenuPopover"] * {
+        div[data-testid="stMainMenuPopover"] {
             background-color: #111726 !important;
+            border: 1px solid #1f293d !important;
+            border-radius: 6px !important;
+        }
+        div[data-testid="stMainMenuPopover"] p, 
+        div[data-testid="stMainMenuPopover"] span, 
+        div[data-testid="stMainMenuPopover"] label {
             color: #e2e8f0 !important;
         }
         div[data-testid="stMainMenuPopover"] button {
@@ -230,10 +235,36 @@ def inject_custom_css() -> None:
             border: none !important;
             color: #e2e8f0 !important;
             padding: 6px 12px !important;
+            width: 100% !important;
+            text-align: left !important;
         }
         div[data-testid="stMainMenuPopover"] button:hover {
             background-color: #1e293b !important;
             color: #38bdf8 !important;
+        }
+        
+        /* Toggle Switch & Checkbox Visibility */
+        div[data-baseweb="checkbox"] > div:first-child,
+        div[data-testid="stToggle"] > div:first-child,
+        [role="switch"] {
+            background-color: #334155 !important;
+            border: 1px solid #475569 !important;
+            border-radius: 9999px !important;
+        }
+        div[data-baseweb="checkbox"][aria-checked="true"] > div:first-child,
+        div[data-testid="stToggle"][aria-checked="true"] > div:first-child,
+        [role="switch"][aria-checked="true"] {
+            background-color: #2563eb !important;
+            border-color: #3b82f6 !important;
+        }
+        
+        /* Toggle Knob (Thumb) */
+        div[data-baseweb="checkbox"] > div:first-child > div,
+        div[data-testid="stToggle"] > div:first-child > div,
+        [role="switch"] > div {
+            background-color: #ffffff !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+            border-radius: 9999px !important;
         }
         
         /* Sidebar styling */
