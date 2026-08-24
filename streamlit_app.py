@@ -170,29 +170,48 @@ def inject_custom_css() -> None:
         /* Top Header Bar & Toolbar */
         header[data-testid="stHeader"] {
             background-color: #0b0f19 !important;
+            border-bottom: 1px solid #1f293d;
         }
         header[data-testid="stHeader"] * {
             color: #cbd5e1 !important;
             fill: #cbd5e1 !important;
         }
         
-        /* Hide Deploy button */
+        /* Deploy Button Styled in Proper Enterprise Colors */
         .stDeployButton, 
-        [data-testid="stToolbarActions"], 
         [data-testid="stDeployButton"] {
-            display: none !important;
+            display: inline-block !important;
+        }
+        .stDeployButton button,
+        [data-testid="stDeployButton"] button {
+            background-color: #111726 !important;
+            color: #e2e8f0 !important;
+            border: 1px solid #1f293d !important;
+            border-radius: 4px !important;
+            padding: 4px 12px !important;
+            font-size: 0.82rem !important;
+            font-weight: 500 !important;
+            transition: all 0.15s ease-in-out !important;
+        }
+        .stDeployButton button:hover,
+        [data-testid="stDeployButton"] button:hover {
+            background-color: #1e293b !important;
+            color: #38bdf8 !important;
+            border-color: #2563eb !important;
         }
         
-        /* Style Header Buttons cleanly with no white square */
+        /* Header Toolbar Buttons & Menu Icon */
         header[data-testid="stHeader"] button {
-            background-color: transparent !important;
-            border: none !important;
+            background-color: #111726 !important;
+            border: 1px solid #1f293d !important;
             color: #cbd5e1 !important;
             border-radius: 4px !important;
+            padding: 4px 8px !important;
         }
         header[data-testid="stHeader"] button:hover {
             background-color: #1e293b !important;
-            color: #ffffff !important;
+            color: #38bdf8 !important;
+            border-color: #2563eb !important;
         }
         
         /* Streamlit Native Main Menu Popover */
@@ -200,6 +219,12 @@ def inject_custom_css() -> None:
         div[data-testid="stMainMenuPopover"] * {
             background-color: #111726 !important;
             color: #e2e8f0 !important;
+        }
+        div[data-testid="stMainMenuPopover"] button {
+            background-color: transparent !important;
+            border: none !important;
+            color: #e2e8f0 !important;
+            padding: 6px 12px !important;
         }
         div[data-testid="stMainMenuPopover"] button:hover {
             background-color: #1e293b !important;
