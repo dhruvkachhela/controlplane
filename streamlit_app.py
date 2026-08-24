@@ -150,26 +150,30 @@ def get_cached_pipeline() -> ControlPlanePipeline:
 
 
 def inject_custom_css() -> None:
-    """Inject disciplined enterprise stylesheet with zero decorative noise or symbols."""
+    """Inject disciplined enterprise stylesheet with zero decorative noise or symbols and high-contrast font visibility."""
     st.markdown(
         """
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
-        html, body, [class*="css"] {
+        /* Global typography and crisp high-contrast color */
+        html, body, [class*="css"], p, span, div, label, li, a, h1, h2, h3, h4, h5, h6 {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #d1d5db;
+            color: #e2e8f0 !important;
         }
         
         /* Main canvas background */
         .stApp {
-            background-color: #0b0f19;
+            background-color: #0b0f19 !important;
         }
         
         /* Sidebar styling */
         section[data-testid="stSidebar"] {
-            background-color: #111726;
-            border-right: 1px solid #1f293d;
+            background-color: #111726 !important;
+            border-right: 1px solid #1f293d !important;
+        }
+        section[data-testid="stSidebar"] * {
+            color: #e2e8f0 !important;
         }
         
         /* Header typography */
@@ -177,19 +181,19 @@ def inject_custom_css() -> None:
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            color: #ffffff;
+            color: #ffffff !important;
             margin-bottom: 2px;
         }
         .app-subtitle {
             font-size: 0.88rem;
-            color: #94a3b8;
+            color: #94a3b8 !important;
             margin-bottom: 20px;
             font-weight: 400;
         }
         .section-label {
             font-size: 0.82rem;
             font-weight: 700;
-            color: #94a3b8;
+            color: #38bdf8 !important;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             margin-top: 20px;
@@ -198,7 +202,23 @@ def inject_custom_css() -> None:
             padding-bottom: 4px;
         }
         
-        /* Clean Metric Card (No auto arrows or delta icons) */
+        /* Widget labels and form text */
+        label, [data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] label {
+            color: #cbd5e1 !important;
+            font-size: 0.84rem !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Selectbox and dropdown visibility */
+        .stSelectbox div, .stSelectbox span, .stSelectbox [data-baseweb="select"] *, div[data-baseweb="popover"] * {
+            color: #f8fafc !important;
+            background-color: #111726 !important;
+        }
+        div[data-baseweb="select"] {
+            border: 1px solid #1f293d !important;
+        }
+        
+        /* Metric Cards */
         .metric-card {
             background-color: #111726;
             border: 1px solid #1f293d;
@@ -209,7 +229,7 @@ def inject_custom_css() -> None:
         .metric-label {
             font-size: 0.74rem;
             font-weight: 600;
-            color: #94a3b8;
+            color: #94a3b8 !important;
             text-transform: uppercase;
             letter-spacing: 0.04em;
             margin-bottom: 4px;
@@ -217,11 +237,11 @@ def inject_custom_css() -> None:
         .metric-value {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #f8fafc;
+            color: #ffffff !important;
         }
         .metric-sub {
             font-size: 0.74rem;
-            color: #64748b;
+            color: #94a3b8 !important;
             margin-top: 2px;
         }
         
@@ -249,7 +269,7 @@ def inject_custom_css() -> None:
         .stage-header {
             font-size: 0.80rem;
             font-weight: 700;
-            color: #f1f5f9;
+            color: #ffffff !important;
             text-transform: uppercase;
             letter-spacing: 0.03em;
             margin-bottom: 6px;
@@ -265,87 +285,112 @@ def inject_custom_css() -> None:
             margin-bottom: 8px;
         }
         .stage-badge.passed {
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #34d399;
+            background-color: rgba(16, 185, 129, 0.20);
+            color: #34d399 !important;
         }
         .stage-badge.blocked {
-            background-color: rgba(239, 68, 68, 0.15);
-            color: #f87171;
+            background-color: rgba(239, 68, 68, 0.20);
+            color: #f87171 !important;
         }
         .stage-badge.escalated {
-            background-color: rgba(245, 158, 11, 0.15);
-            color: #fbbf24;
+            background-color: rgba(245, 158, 11, 0.20);
+            color: #fbbf24 !important;
         }
         .stage-badge.skipped {
-            background-color: rgba(71, 85, 105, 0.20);
-            color: #94a3b8;
+            background-color: rgba(71, 85, 105, 0.25);
+            color: #94a3b8 !important;
         }
         .stage-body {
             font-size: 0.78rem;
-            color: #cbd5e1;
+            color: #cbd5e1 !important;
             line-height: 1.4;
+        }
+        .stage-body b {
+            color: #f1f5f9 !important;
         }
         
         /* Primary Action Button */
         div.stButton > button[kind="primary"] {
-            background-color: #2563eb;
-            color: #ffffff;
+            background-color: #2563eb !important;
+            color: #ffffff !important;
             font-weight: 600;
             font-size: 0.90rem;
             padding: 10px 20px;
             border-radius: 4px;
-            border: 1px solid #1d4ed8;
+            border: 1px solid #1d4ed8 !important;
             transition: all 0.1s ease-in-out;
             letter-spacing: 0.01em;
         }
         div.stButton > button[kind="primary"]:hover {
-            background-color: #1d4ed8;
-            border-color: #1e40af;
+            background-color: #1d4ed8 !important;
+            border-color: #1e40af !important;
         }
         
         /* Secondary Helper Buttons */
         div.stButton > button[kind="secondary"] {
-            background-color: #111726;
-            color: #cbd5e1;
-            border: 1px solid #1f293d;
+            background-color: #111726 !important;
+            color: #e2e8f0 !important;
+            border: 1px solid #1f293d !important;
             border-radius: 4px;
             font-size: 0.76rem;
             font-weight: 500;
             padding: 4px 10px;
         }
         div.stButton > button[kind="secondary"]:hover {
-            background-color: #1a2236;
-            color: #ffffff;
-            border-color: #3b82f6;
+            background-color: #1a2236 !important;
+            color: #ffffff !important;
+            border-color: #3b82f6 !important;
         }
         
-        /* Text Area */
-        textarea {
+        /* Text Area & Input Fields */
+        textarea, input {
             background-color: #0d121f !important;
             border: 1px solid #1f293d !important;
             border-radius: 4px !important;
-            color: #f8fafc !important;
+            color: #ffffff !important;
             font-size: 0.88rem !important;
         }
-        textarea:focus {
+        textarea:focus, input:focus {
             border-color: #2563eb !important;
             box-shadow: 0 0 0 1px #2563eb !important;
         }
         
-        /* Scenario Reference Card */
+        /* Scenario Reference Panel */
         .scenario-panel {
             background-color: #111726;
             border-left: 2px solid #2563eb;
             padding: 10px 14px;
             border-radius: 0 4px 4px 0;
             margin-bottom: 12px;
-            font-size: 0.80rem;
+            font-size: 0.82rem;
             line-height: 1.45;
+            color: #cbd5e1 !important;
+        }
+        .scenario-panel b {
+            color: #f8fafc !important;
+        }
+        .scenario-panel code {
+            color: #38bdf8 !important;
+            background-color: #090d16 !important;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+        
+        /* Code blocks */
+        pre, code, [data-testid="stCodeBlock"] * {
+            color: #38bdf8 !important;
+            background-color: #0d121f !important;
+        }
+        
+        /* Markdown container text */
+        div[data-testid="stMarkdownContainer"] p, div[data-testid="stMarkdownContainer"] span {
+            color: #e2e8f0 !important;
         }
         </style>
         """,
         unsafe_allow_html=True,
     )
+
 
 
 def render_metric_card(label: str, value: str, subtext: str = "") -> str:
