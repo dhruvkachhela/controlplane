@@ -167,7 +167,7 @@ def inject_custom_css() -> None:
             color: #e2e8f0 !important;
         }
         
-        /* Top Header Bar */
+        /* Top Header Bar & Toolbar */
         header[data-testid="stHeader"] {
             background-color: #0b0f19 !important;
         }
@@ -175,7 +175,23 @@ def inject_custom_css() -> None:
             color: #cbd5e1 !important;
             fill: #cbd5e1 !important;
         }
+        
+        /* Hide Deploy button */
+        .stDeployButton, 
+        [data-testid="stToolbarActions"], 
+        [data-testid="stDeployButton"] {
+            display: none !important;
+        }
+        
+        /* Style Header Buttons cleanly with no white square */
+        header[data-testid="stHeader"] button {
+            background-color: transparent !important;
+            border: none !important;
+            color: #cbd5e1 !important;
+            border-radius: 4px !important;
+        }
         header[data-testid="stHeader"] button:hover {
+            background-color: #1e293b !important;
             color: #ffffff !important;
         }
         
