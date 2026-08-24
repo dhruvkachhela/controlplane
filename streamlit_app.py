@@ -174,7 +174,12 @@ def inject_custom_css() -> None:
         }
         header[data-testid="stHeader"] * {
             color: #cbd5e1 !important;
+        }
+        header[data-testid="stHeader"] svg path {
             fill: #cbd5e1 !important;
+        }
+        header[data-testid="stHeader"] svg path[fill="none"] {
+            fill: none !important;
         }
         
         /* Deploy Button Styled in Proper Enterprise Colors */
