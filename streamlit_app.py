@@ -8,7 +8,15 @@
 # with realistic latency, token, and compute cost telemetry.
 """
 
+import os
+import sys
 from typing import Dict, List, Tuple
+
+# Ensure src/ directory is in pythonpath for Streamlit Cloud deployment
+_src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "src"))
+if _src_dir not in sys.path:
+    sys.path.insert(0, _src_dir)
+
 import streamlit as st
 
 from controlplane.config import Settings, get_settings

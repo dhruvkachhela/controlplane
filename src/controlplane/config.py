@@ -49,7 +49,16 @@ class Settings:
 
 
         # NVIDIA NIM / Llama 3.1 8B configuration
-        self.nvidia_api_key: str = os.getenv("NVIDIA_API_KEY", "")
+        env_key: str = os.getenv("NVIDIA_API_KEY", "")
+        if not env_key:
+            try:
+                import streamlit as st
+                if hasattr(st, "secrets") and "NVIDIA_API_KEY" in st.secrets:
+                    env_key = str(st.secrets["NVIDIA_API_KEY"])
+            except Exception:
+                pass
+
+        self.nvidia_api_key: str = env_key
         self.nvidia_base_url: str = os.getenv(
             "NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1"
         )
