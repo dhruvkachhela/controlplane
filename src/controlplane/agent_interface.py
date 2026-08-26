@@ -10,6 +10,7 @@
 """
 
 import math
+import re
 import time
 from typing import Any, Dict, Optional
 import requests
@@ -22,6 +23,29 @@ logger = get_logger(__name__)
 
 # Pricing constant for Laguna 2.1 XS in USD per 1,000,000 tokens
 LAGUNA_2_1_PRICE_PER_MILLION: float = 0.14
+
+
+def clean_raw_model_output(text: str) -> str:
+    """
+    Remove internal reasoning tags (<think>, <thinking>, <api_result>) and clean markdown.
+    """
+    if not text:
+        return ""
+    # Strip internal reasoning/thinking tags
+    cleaned: str = re.sub(r"<think[\s\S]*?<\/think>", "", text, flags=re.IGNORECASE)
+    cleaned = re.sub(r"<thinking[\s\S]*?<\/thinking>", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"<api_result[\s\S]*?<\/api_result>", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"<\/?(?:think|thinking|api_result|reasoning|scratchpad)[^>]*>", "", cleaned, flags=re.IGNORECASE)
+    
+    # Strip excessive markdown headers and bolding
+    cleaned = re.sub(r"^#+\s+", "", cleaned, flags=re.MULTILINE)
+    cleaned = re.sub(r"\*\*(.*?)\*\*", r"\1", cleaned)
+    cleaned = re.sub(r"\*(.*?)\*", r"\1", cleaned)
+    cleaned = re.sub(r"`{1,3}(.*?)`{1,3}", r"\1", cleaned)
+    
+    # Collapse extra newlines
+    cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
+    return cleaned.strip()
 
 
 def estimate_tokens(text: str) -> int:
@@ -162,7 +186,8 @@ class AgentInterface:
                     choices: list = response_json.get("choices", [])
                     
                     if choices:
-                        message_content: str = choices[0].get("message", {}).get("content", "")
+                        raw_msg = choices[0].get("message", {}).get("content", "")
+                        message_content: str = clean_raw_model_output(raw_msg)
                     else:
                         message_content = "No content returned by model."
                         
