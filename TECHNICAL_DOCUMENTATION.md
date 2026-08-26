@@ -16,7 +16,7 @@ Enterprise adoption of autonomous AI agents is hindered by three fundamental vul
 2. **Adversarial Exploitation**: Prompt injection, system prompt exfiltration, unauthorized action execution, and privilege escalation.
 3. **Economic Inefficiency & Hallucination**: Unbounded token costs from bloated prompts, ungrounded agent execution on ambiguous queries, and lack of post-generation verification.
 
-ControlPlane.ai resolves these challenges via a deterministic 5-stage synchronous pipeline: **Protect**, **Prepare**, **Agent Inference**, **Validate**, and **Respond**. By pairing high-speed heuristic gates (<1ms) with Small Language Model (SLM) intelligence (`Llama 3.1 8B` via NVIDIA NIM), ControlPlane.ai achieves **>52.9% net per-query compute cost savings** compared to direct frontier model invocations while establishing deterministic compliance and privacy guarantees.
+ControlPlane.ai resolves these challenges via a deterministic 5-stage synchronous pipeline: **Protect**, **Prepare**, **Agent Inference**, **Validate**, and **Respond**. By pairing high-speed heuristic gates (<1ms) with Small Language Model (SLM) intelligence (`poolside/laguna-xs-2.1` via NVIDIA NIM), ControlPlane.ai achieves **84.4% net blended per-query compute cost savings** compared to direct frontier model invocations while establishing deterministic compliance and privacy guarantees.
 
 ---
 

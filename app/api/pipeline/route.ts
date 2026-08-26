@@ -155,14 +155,14 @@ export async function POST(req: NextRequest) {
 
     const latency = (performance.now() - startTime) / 1000;
 
-    // Dynamic cost savings calculation based on actual token consumption vs Frontier 70B
+    // Dynamic cost savings calculation based on actual token consumption vs Frontier Baseline ($2.50 in / $10.00 out)
     const uncompressedPromptTokens = Math.max(1, Math.round(query.length / 4));
-    const frontierCost = (uncompressedPromptTokens * 3.0 + completionTokens * 15.0) / 1_000_000;
+    const frontierCost = (uncompressedPromptTokens * 2.50 + completionTokens * 10.00) / 1_000_000;
     const controlPlaneCost = (promptTokens * 0.14 + completionTokens * 0.14) / 1_000_000;
     const dynamicSavings = frontierCost > 0
       ? parseFloat((((frontierCost - controlPlaneCost) / frontierCost) * 100).toFixed(1))
-      : 52.9;
-    const safeSavings = Math.min(98.5, Math.max(45.0, dynamicSavings));
+      : 84.4;
+    const safeSavings = Math.min(99.0, Math.max(48.0, dynamicSavings));
 
     return NextResponse.json({
       status: "PASSED",

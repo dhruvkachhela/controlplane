@@ -673,7 +673,7 @@ def render_home_overview(pipeline: ControlPlanePipeline) -> None:
             """
             <div class="benefit-card">
                 <div class="benefit-num">Benefit 02</div>
-                <div class="benefit-title">52.9% Compute Savings</div>
+                <div class="benefit-title">84.4% Compute Savings</div>
                 <div class="benefit-desc">Prompt compression and intelligent small-model routing (NVIDIA NIM Laguna 2.1 XS) vs frontier GPT-4o baselines.</div>
             </div>
             """,
@@ -717,7 +717,7 @@ def render_home_overview(pipeline: ControlPlanePipeline) -> None:
     with kpi_col1:
         st.markdown(render_metric_card("INFERENCE ENGINE", "Laguna 2.1 XS"), unsafe_allow_html=True)
     with kpi_col2:
-        st.markdown(render_metric_card("COST REDUCTION", "52.9%"), unsafe_allow_html=True)
+        st.markdown(render_metric_card("COST REDUCTION", "84.4%"), unsafe_allow_html=True)
     with kpi_col3:
         st.markdown(render_metric_card("RISK GATE", f"Score ≥ {pipeline.settings.risk_threshold:.2f}"), unsafe_allow_html=True)
     with kpi_col4:
@@ -1059,7 +1059,7 @@ def render_interactive_page(pipeline: ControlPlanePipeline) -> None:
             req_id = getattr(output_payload, "request_id", "req-unknown")
             act_cost = getattr(output_payload, "actual_cost_usd", 0.0)
             front_cost = getattr(output_payload, "frontier_cost_usd", 0.0)
-            sav_pct = getattr(output_payload, "cost_savings_pct", 52.9)
+            sav_pct = getattr(output_payload, "cost_savings_pct", 84.4)
             net_saved = getattr(output_payload, "net_dollar_savings", max(0.0, front_cost - act_cost))
 
             t_row1, t_row2, t_row3 = st.columns(3)

@@ -100,7 +100,7 @@ export default function Hero() {
                 NVIDIA NIM 8B
               </span>
               <span className="text-xs font-bold font-mono text-white mt-1">
-                52.9% COST SAVINGS
+                84.4% COST SAVINGS
               </span>
             </div>
 

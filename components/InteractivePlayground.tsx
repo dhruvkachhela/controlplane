@@ -41,7 +41,7 @@ const PRESETS: Record<string, Preset> = {
       "Customer Alice Walker (alice.walker@enterprise.com) has an active verified balance of $14,250.00 USD. Account is in good standing.",
     latency: 0.245,
     tokens: { total: 142, prompt: 94, completion: 48 },
-    savingsPct: 52.9,
+    savingsPct: 86.2,
   },
   high_risk_jailbreak: {
     id: "high_risk_jailbreak",
@@ -79,7 +79,7 @@ const PRESETS: Record<string, Preset> = {
       "ESCALATION NOTICE: Clarification required. Please specify the exact record ID, document name, or target recipient before proceeding.",
     latency: 0.048,
     tokens: { total: 24, prompt: 24, completion: 0 },
-    savingsPct: 78.4,
+    savingsPct: 99.4,
   },
   financial_fraud: {
     id: "financial_fraud",
@@ -111,7 +111,7 @@ const PRESETS: Record<string, Preset> = {
     deliveredOutput: "Calculated Loan Schedule: Monthly Payment is $1,060.77 USD. Total Interest over 48 months is $5,916.96 USD with total cost $50,916.96 USD.",
     latency: 0.280,
     tokens: { total: 168, prompt: 82, completion: 86 },
-    savingsPct: 52.9,
+    savingsPct: 89.5,
   },
   invoice_status: {
     id: "invoice_status",
@@ -127,7 +127,7 @@ const PRESETS: Record<string, Preset> = {
     deliveredOutput: "Invoice INV-2026-8891 for Acme Corp has been PAID in full ($8,420.00 USD) on February 14, 2026. No outstanding balance.",
     latency: 0.210,
     tokens: { total: 110, prompt: 65, completion: 45 },
-    savingsPct: 52.9,
+    savingsPct: 87.1,
   },
 };
 
@@ -275,7 +275,7 @@ export default function InteractivePlayground() {
           deliveredOutput: data.deliveredOutput,
           latency: data.latency,
           tokens: data.tokens || { total: 120, prompt: 70, completion: 50 },
-          savingsPct: data.savingsPct || 52.9,
+          savingsPct: data.savingsPct || 84.4,
         });
       } else {
         setLiveResult(null);

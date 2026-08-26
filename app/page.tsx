@@ -23,7 +23,7 @@ export default function HomePage() {
       {/* 4. Live Interactive Zero-Trust Trial Playground */}
       <InteractivePlayground />
 
-      {/* 5. Economics & Performance Metrics (52.9% Compute Savings) */}
+      {/* 5. Economics & Performance Metrics (84.4% Compute Savings) */}
       <StatementTwo />
 
       {/* 6. Developer Implementation & Code Architecture */}

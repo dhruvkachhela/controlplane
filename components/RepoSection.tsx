@@ -139,7 +139,7 @@ def protect_stage(raw_text: str) -> Dict[str, Any]:
     code: `"""
 Stage 3: AGENT - NVIDIA NIM Small-Model Reasoning
 Routes sanitized, compressed prompts to poolside/laguna-xs-2.1.
-Delivers 52.9% compute cost reduction vs frontier models.
+Delivers 84.4% compute cost reduction vs frontier models.
 """
 
 import os
@@ -178,7 +178,7 @@ def agent_stage(optimized_prompt: str) -> Dict[str, Any]:
         "draft_response": draft_text,
         "model": MODEL_NAME,
         "tokens": usage,
-        "compute_savings_pct": 52.9,
+        "compute_savings_pct": 84.4,
     }`,
   },
   {

@@ -166,7 +166,7 @@ class FinalOutput(BaseModel):
     actual_cost_usd: float = Field(default=0.0, description="Actual SLM inference cost for this execution in USD.")
     frontier_cost_usd: float = Field(default=0.0, description="Estimated inference cost if run on an unconstrained frontier model in USD.")
     net_dollar_savings: float = Field(default=0.0, description="Total dollar savings achieved for this specific query in USD.")
-    cost_savings_pct: float = Field(default=52.9, description="Percentage cost reduction achieved compared to un-guarded frontier models.")
+    cost_savings_pct: float = Field(default=84.4, description="Percentage cost reduction achieved compared to un-guarded frontier models.")
     audit_trail: Dict[str, str] = Field(default_factory=dict, description="Audit log mapping each pipeline stage to its status summary.")
 
 

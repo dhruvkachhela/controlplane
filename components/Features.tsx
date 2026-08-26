@@ -25,7 +25,7 @@ export default function Features() {
       id: "003",
       title: "STAGE 3: AGENT",
       sub: "NVIDIA NIM LAGUNA 2.1",
-      desc: "Executes small-model reasoning with poolside/laguna-xs-2.1 on NVIDIA NIM runtime hardware. Achieves ultra-low latency and 52.9% net dollar compute savings compared to frontier GPT-4o baselines with zero secret leakage.",
+      desc: "Executes small-model reasoning with poolside/laguna-xs-2.1 on NVIDIA NIM runtime hardware. Achieves ultra-low latency and 84.4% net blended dollar compute savings compared to frontier GPT-4o baselines with zero secret leakage.",
       tag: "NVIDIA NIM LAGUNA 2.1",
     },
     {

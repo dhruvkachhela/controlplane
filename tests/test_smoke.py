@@ -214,11 +214,11 @@ def test_pydantic_models_instantiation() -> None:
         masked_query=masked_req.masked_query,
         risk_assessment=risk_assessment,
         latency_seconds=0.52,
-        cost_savings_pct=52.9,
+        cost_savings_pct=84.4,
         audit_trail={"protect": "complete", "prepare": "complete"},
     )
     assert final_output.is_blocked is False
-    assert final_output.cost_savings_pct == 52.9
+    assert final_output.cost_savings_pct == 84.4
 
 
 def test_logger_utility() -> None:

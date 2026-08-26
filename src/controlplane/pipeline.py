@@ -267,7 +267,7 @@ class ControlPlanePipeline:
             total_comp_toks: int = last_agent_response.completion_tokens if last_agent_response else 0
             act_cost: float = last_agent_response.cost_estimate if last_agent_response else 0.0
             front_cost: float = (total_prompt_toks * 0.000005) + (total_comp_toks * 0.000015)
-            savings_pct: float = ((front_cost - act_cost) / front_cost * 100.0) if front_cost > 0 else 52.9
+            savings_pct: float = ((front_cost - act_cost) / front_cost * 100.0) if front_cost > 0 else 84.4
             return FinalOutput(
                 request_id=active_request_id,
                 final_text=escalation_message,

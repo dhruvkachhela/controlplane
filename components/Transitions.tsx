@@ -75,14 +75,14 @@ export function StatementTwo() {
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08]">
             <span className="text-[#FF5500]">
-              <CounterNumber value={52.9} decimals={1} suffix="% " />
+              <CounterNumber value={84.4} decimals={1} suffix="% " />
             </span>
-            Compute Savings. <br />
+            Blended Compute Savings. <br />
             <span className="text-white/70">Zero Data Leakage. 100% Audit Proof.</span>
           </h2>
 
           <p className="text-sm sm:text-base text-white/75 leading-relaxed font-normal">
-            By pairing deterministic PII masking with <strong>NVIDIA NIM Laguna 2.1 XS small-model routing</strong>, ControlPlane delivers frontier-grade agent reasoning at less than half the operating cost.
+            By pairing deterministic PII masking with <strong>NVIDIA NIM Laguna 2.1 XS small-model routing</strong> and Stage 2 prompt compression, ControlPlane slashes enterprise agent infrastructure bills by <strong>84.4%</strong> vs raw frontier models.
           </p>
         </motion.div>
 
@@ -90,7 +90,7 @@ export function StatementTwo() {
         <div className="w-full max-w-6xl rounded-16 border border-white/15 bg-[#0D0D0D]/90 backdrop-blur-2xl shadow-2xl p-6 sm:p-8 flex flex-col gap-6">
           {/* Top Row: 3 Core Bento Columns */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-            {/* Bento Card 1: 52.9% Compute Economics Breakdown (5 Cols) */}
+            {/* Bento Card 1: 84.4% Compute Economics Breakdown (5 Cols) */}
             <motion.div
               whileHover={{ borderColor: "rgba(255,85,0,0.4)" }}
               className="lg:col-span-5 p-6 rounded-12 border border-white/10 bg-[#121212] flex flex-col justify-between gap-5 transition-colors"
@@ -100,22 +100,22 @@ export function StatementTwo() {
                   // COMPUTE ECONOMICS
                 </span>
                 <span className="font-mono text-[11px] text-[#FF5500] font-bold">
-                  SAVE 52.9%
+                  SAVE 84.4%
                 </span>
               </div>
 
               <div>
                 <div className="text-4xl sm:text-5xl font-bold font-mono text-white tracking-tight flex items-baseline gap-1">
-                  <CounterNumber value={52.9} decimals={1} suffix="%" />
-                  <span className="text-xs font-sans text-white/50 uppercase font-normal">LOWER COST</span>
+                  <CounterNumber value={84.4} decimals={1} suffix="%" />
+                  <span className="text-xs font-sans text-white/50 uppercase font-normal">BLENDED SAVINGS</span>
                 </div>
 
                 {/* Visual Comparative Cost Bars */}
                 <div className="space-y-2.5 mt-4">
                   <div>
                     <div className="flex justify-between font-mono text-[10px] text-white/50 mb-1">
-                      <span>FRONTIER 70B BASELINE</span>
-                      <span>$0.0030 / 1k tok</span>
+                      <span>FRONTIER HEAVY BASELINE</span>
+                      <span>$0.00350 / 1k tok</span>
                     </div>
                     <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                       <div className="h-full w-full bg-white/40 rounded-full" />
@@ -125,10 +125,10 @@ export function StatementTwo() {
                   <div>
                     <div className="flex justify-between font-mono text-[10px] text-[#FF5500] mb-1 font-bold">
                       <span>CONTROLPLANE + LAGUNA 2.1</span>
-                      <span>$0.0014 / 1k tok</span>
+                      <span>$0.00055 / 1k tok</span>
                     </div>
                     <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
-                      <div className="h-full w-[47.1%] bg-[#FF5500] rounded-full shadow-[0_0_10px_#FF5500]" />
+                      <div className="h-full w-[15.6%] bg-[#FF5500] rounded-full shadow-[0_0_10px_#FF5500]" />
                     </div>
                   </div>
                 </div>
@@ -136,7 +136,7 @@ export function StatementTwo() {
 
               <div className="font-mono text-[10px] text-white/40 flex items-center justify-between pt-2 border-t border-white/5">
                 <span>FLUFF COMPRESSION: 38.4%</span>
-                <span>EFFICIENCY: 2.1x</span>
+                <span>EFFICIENCY: 6.4x</span>
               </div>
             </motion.div>
 

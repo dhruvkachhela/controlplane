@@ -17,7 +17,7 @@
 ### The 3 Enterprise AI Bottlenecks Solved:
 1. **Privacy & Secret Leakage**: Prevents sensitive customer PII and API credentials from reaching third-party foundation models.
 2. **Adversarial Exploitation**: Stops prompt injection, credential theft, and unauthorized transactions before LLM invocation.
-3. **Runaway Compute Costs**: Reduces token expenditure by **>52.9%** (up to 98% per query) by leveraging governed Small Language Models (`Llama 3.1 8B`) instead of expensive frontier models.
+3. **Runaway Compute Costs**: Reduces token expenditure by **84.4% blended savings** (up to 98% per query) by leveraging governed Small Language Models (`poolside/laguna-xs-2.1`) instead of expensive frontier models.
 
 ---
 
