@@ -110,7 +110,7 @@ export async function POST(req: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "meta/llama-3.1-8b-instruct",
+          model: "poolside/laguna-xs-2.1",
           messages: [
             {
               role: "system",

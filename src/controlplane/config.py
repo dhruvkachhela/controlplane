@@ -48,7 +48,7 @@ class Settings:
 
 
 
-        # NVIDIA NIM / Llama 3.1 8B configuration
+        # NVIDIA NIM / Laguna 2.1 XS SLM configuration
         env_key: str = os.getenv("NVIDIA_API_KEY", "")
         if not env_key:
             try:
@@ -63,7 +63,7 @@ class Settings:
             "NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1"
         )
         self.nvidia_model: str = os.getenv(
-            "NVIDIA_MODEL", "meta/llama-3.1-8b-instruct"
+            "NVIDIA_MODEL", "poolside/laguna-xs-2.1"
         )
 
         # Operational parameters

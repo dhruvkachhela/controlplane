@@ -24,9 +24,9 @@ export default function Features() {
     {
       id: "003",
       title: "STAGE 3: AGENT",
-      sub: "NVIDIA NIM 8B INFERENCE",
-      desc: "Executes small-model reasoning with meta/llama-3.1-8b-instruct on NVIDIA NIM runtime hardware. Achieves ultra-low latency and 52.9% net dollar compute savings compared to frontier GPT-4o baselines with zero secret leakage.",
-      tag: "NVIDIA NIM 8B",
+      sub: "NVIDIA NIM LAGUNA 2.1",
+      desc: "Executes small-model reasoning with poolside/laguna-xs-2.1 on NVIDIA NIM runtime hardware. Achieves ultra-low latency and 52.9% net dollar compute savings compared to frontier GPT-4o baselines with zero secret leakage.",
+      tag: "NVIDIA NIM LAGUNA 2.1",
     },
     {
       id: "004",

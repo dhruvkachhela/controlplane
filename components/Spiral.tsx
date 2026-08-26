@@ -34,7 +34,7 @@ export default function Spiral() {
     {
       id: "ring-4",
       r: 255,
-      text: "· NVIDIA NIM LLAMA 3.1 8B INFERENCE · 52.9% COMPUTE COST SAVINGS · ZERO DATA LEAKAGE · ",
+      text: "· NVIDIA NIM LAGUNA 2.1 XS INFERENCE · 52.9% COMPUTE COST SAVINGS · ZERO DATA LEAKAGE · ",
       duration: 72,
       dir: "reverse",
       opacity: "opacity-85",

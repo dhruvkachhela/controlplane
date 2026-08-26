@@ -41,7 +41,7 @@ export function StatementTwo() {
   const stages = [
     { num: "01", name: "PROTECT", metric: "< 0.001s", desc: "Regex & Shannon Entropy PII Tokenization" },
     { num: "02", name: "PREPARE", metric: "38.4% Saved", desc: "Context Sufficiency & Prompt Compression" },
-    { num: "03", name: "AGENT", metric: "NIM 8B", desc: "Llama 3.1 8B Small-Model Reasoning" },
+    { num: "03", name: "AGENT", metric: "LAGUNA 2.1", desc: "Laguna 2.1 XS Small-Model Reasoning" },
     { num: "04", name: "VALIDATE", metric: "100% Pass", desc: "Multi-Agent Anti-Hallucination Critic" },
     { num: "05", name: "RESPOND", metric: "0 Leakage", desc: "Deterministic Vault Detokenization" },
   ];
@@ -70,7 +70,7 @@ export function StatementTwo() {
           {/* Eyebrow Pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 font-mono text-xs uppercase tracking-widest text-white/80 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse shadow-[0_0_8px_#FF5500]" />
-            <ScrambleText text="PRODUCTION BENCHMARKS // NVIDIA NIM LLAMA 3.1 8B" />
+            <ScrambleText text="PRODUCTION BENCHMARKS // NVIDIA NIM LAGUNA 2.1 XS" />
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08]">
@@ -82,7 +82,7 @@ export function StatementTwo() {
           </h2>
 
           <p className="text-sm sm:text-base text-white/75 leading-relaxed font-normal">
-            By pairing deterministic PII masking with <strong>NVIDIA NIM Llama 3.1 8B small-model routing</strong>, ControlPlane delivers frontier-grade agent reasoning at less than half the operating cost.
+            By pairing deterministic PII masking with <strong>NVIDIA NIM Laguna 2.1 XS small-model routing</strong>, ControlPlane delivers frontier-grade agent reasoning at less than half the operating cost.
           </p>
         </motion.div>
 
@@ -124,7 +124,7 @@ export function StatementTwo() {
 
                   <div>
                     <div className="flex justify-between font-mono text-[10px] text-[#FF5500] mb-1 font-bold">
-                      <span>CONTROLPLANE + NIM 8B</span>
+                      <span>CONTROLPLANE + LAGUNA 2.1</span>
                       <span>$0.0014 / 1k tok</span>
                     </div>
                     <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">

@@ -52,7 +52,7 @@ class ZeroTrustControlPlane:
         if not stage2["is_sufficient"]:
             return self._escalate_to_operator(stage2, audit)
 
-        # Stage 3: AGENT - NVIDIA NIM Llama 3.1 8B Small-Model Reasoning
+        # Stage 3: AGENT - NVIDIA NIM Laguna 2.1 XS Small-Model Reasoning
         stage3 = agent_stage(stage2["optimized_prompt"])
         audit["stages"]["agent"] = stage3
 
@@ -135,10 +135,10 @@ def protect_stage(raw_text: str) -> Dict[str, Any]:
     name: "agent.py",
     category: "STAGES",
     language: "python",
-    description: "Stage 3: NVIDIA NIM Llama 3.1 8B Small-Model Reasoning",
+    description: "Stage 3: NVIDIA NIM Laguna 2.1 XS Small-Model Reasoning",
     code: `"""
 Stage 3: AGENT - NVIDIA NIM Small-Model Reasoning
-Routes sanitized, compressed prompts to meta/llama-3.1-8b-instruct.
+Routes sanitized, compressed prompts to poolside/laguna-xs-2.1.
 Delivers 52.9% compute cost reduction vs frontier models.
 """
 
@@ -149,7 +149,7 @@ from typing import Dict, Any
 
 NVIDIA_BASE_URL = os.getenv("NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1")
 NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY", "")
-MODEL_NAME = os.getenv("NVIDIA_MODEL", "meta/llama-3.1-8b-instruct")
+MODEL_NAME = os.getenv("NVIDIA_MODEL", "poolside/laguna-xs-2.1")
 
 def agent_stage(optimized_prompt: str) -> Dict[str, Any]:
     headers = {

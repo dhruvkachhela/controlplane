@@ -24,7 +24,7 @@ export default function CommonProblems() {
       tag: "ECONOMIC WASTE",
       problem: "52.9% Frontier Model Overspend",
       impact: "Sending verbose prompts with conversational fluff to frontier models (GPT-4o/Claude 3.5) causes massive, unnecessary inference bills.",
-      solution: "NVIDIA NIM 8B + Prompt Compression: Strips prompt bloat and routes to high-speed Llama 3.1 8B, slashing compute costs by 52.9% while matching accuracy.",
+      solution: "NVIDIA NIM Laguna 2.1 + Prompt Compression: Strips prompt bloat and routes to high-speed Laguna 2.1 XS, slashing compute costs by 52.9% while matching accuracy.",
     },
     {
       id: "04",

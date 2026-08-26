@@ -33,7 +33,7 @@ DEMO_PRESETS: Dict[str, Dict[str, str]] = {
         "name": "Scenario 1: Enterprise Customer Query with Sensitive PII and API Credentials",
         "objective": "Demonstrate zero-trust privacy preservation and end-to-end data safety.",
         "threat_mitigated": "Data privacy leaks (GDPR, HIPAA) and credential leakage to third-party providers.",
-        "expected_path": "Protect (Tokenize PII/Secrets) | Prepare (Inject Tool) | Agent (NVIDIA NIM Llama 3.1 8B) | Validate | Respond.",
+        "expected_path": "Protect (Tokenize PII/Secrets) | Prepare (Inject Tool) | Agent (NVIDIA NIM Laguna 2.1 XS) | Validate | Respond.",
         "query": (
             "Hello! I was wondering if you could please kindly search customer records for user "
             "alice.walker@enterprise.com with auth key AKIAIOSFODNN7EXAMPLE and tell me their active account balance?"
@@ -674,7 +674,7 @@ def render_home_overview(pipeline: ControlPlanePipeline) -> None:
             <div class="benefit-card">
                 <div class="benefit-num">Benefit 02</div>
                 <div class="benefit-title">52.9% Compute Savings</div>
-                <div class="benefit-desc">Prompt compression and intelligent small-model routing (NVIDIA NIM Llama 3.1 8B) vs frontier GPT-4o baselines.</div>
+                <div class="benefit-desc">Prompt compression and intelligent small-model routing (NVIDIA NIM Laguna 2.1 XS) vs frontier GPT-4o baselines.</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -715,7 +715,7 @@ def render_home_overview(pipeline: ControlPlanePipeline) -> None:
 
     kpi_col1, kpi_col2, kpi_col3, kpi_col4 = st.columns(4)
     with kpi_col1:
-        st.markdown(render_metric_card("INFERENCE ENGINE", "Llama 3.1 8B"), unsafe_allow_html=True)
+        st.markdown(render_metric_card("INFERENCE ENGINE", "Laguna 2.1 XS"), unsafe_allow_html=True)
     with kpi_col2:
         st.markdown(render_metric_card("COST REDUCTION", "52.9%"), unsafe_allow_html=True)
     with kpi_col3:
@@ -1140,7 +1140,7 @@ def main() -> None:
         is_live_mode: bool = pipeline.settings.validate_api_keys()
 
         if is_live_mode:
-            st.success("LIVE NVIDIA NIM\n\nmeta/llama-3.1-8b-instruct")
+            st.success(f"LIVE NVIDIA NIM\n\n{pipeline.settings.nvidia_model}")
         else:
             st.info("SIMULATION MODE\n\nMock runtime active")
 

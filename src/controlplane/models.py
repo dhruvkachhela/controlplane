@@ -103,7 +103,7 @@ class AgentResponse(BaseModel):
     request_id: str = Field(description="Identifier matching the UserRequest.")
     query_sent: str = Field(description="The exact rewritten query string sent to the agent.")
     raw_response: str = Field(description="The raw output text returned by the enterprise model.")
-    model_name: str = Field(default="meta/llama-3.1-8b-instruct", description="Name of the model that generated the response.")
+    model_name: str = Field(default="poolside/laguna-xs-2.1", description="Name of the model that generated the response.")
     execution_time_seconds: float = Field(default=0.0, description="Time taken for the agent call to execute.")
     prompt_tokens: int = Field(default=0, description="Estimated or actual input token count.")
     completion_tokens: int = Field(default=0, description="Estimated or actual output token count.")

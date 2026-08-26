@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ControlPlane.ai | Zero-Trust Control Plane for AI Agents",
-  description: "The enterprise zero-trust guardrail pipeline for autonomous AI agents. Deterministic PII tokenization, prompt injection firewall, NVIDIA NIM Llama 3.1 8B inference, and critic verification.",
+  description: "The enterprise zero-trust guardrail pipeline for autonomous AI agents. Deterministic PII tokenization, prompt injection firewall, NVIDIA NIM Laguna 2.1 XS inference, and critic verification.",
   icons: {
     icon: "/favicon.ico",
   },

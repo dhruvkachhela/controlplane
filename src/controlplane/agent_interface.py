@@ -1,11 +1,12 @@
 """
 # How this works:
 # This module implements the model-agnostic Agent Interface for ControlPlane.ai.
-# It wraps calls to the primary enterprise model (NVIDIA Llama 3.1 8B via NVIDIA NIM API)
+# It wraps calls to the primary enterprise model (NVIDIA Laguna 2.1 XS SLM via NVIDIA NIM API)
 # using credentials exclusively loaded from the environment settings.
 # It formats OpenAI-compatible chat completion requests, measures execution latency,
 # and tracks token usage and inference cost estimates.
-# If no API key is provided or if network calls encounter errors, it provides graceful simulation.
+# It wraps calls to the primary enterprise model (NVIDIA Laguna 2.1 XS SLM via NVIDIA NIM API)
+# and provides simulated fallbacks with token counting and cost metrics.
 """
 
 import math
@@ -19,9 +20,8 @@ from controlplane.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-# Pricing constant for NVIDIA Llama 3.1 8B in USD per 1,000,000 tokens
-# Approximately $0.18 per 1M tokens ($0.00018 per 1k tokens)
-LLAMA_3_1_8B_PRICE_PER_MILLION: float = 0.18
+# Pricing constant for Laguna 2.1 XS in USD per 1,000,000 tokens
+LAGUNA_2_1_PRICE_PER_MILLION: float = 0.14
 
 
 def estimate_tokens(text: str) -> int:
@@ -45,11 +45,11 @@ def estimate_tokens(text: str) -> int:
     return max(estimated_count, 1)
 
 
-def calculate_inference_cost(prompt_tokens: int, completion_tokens: int, model_name: str = "meta/llama-3.1-8b-instruct") -> float:
+def calculate_inference_cost(prompt_tokens: int, completion_tokens: int, model_name: str = "poolside/laguna-xs-2.1") -> float:
     """
     Calculate estimated computational inference cost for a model call in USD.
     
-    This function applies the pricing model of lightweight SLMs (e.g. Llama 3.1 8B)
+    This function applies the pricing model of lightweight SLMs (e.g. Laguna 2.1 XS)
     to support cost tracking and demonstrate compute savings over un-guarded frontier models.
     
     Parameters:
@@ -61,7 +61,7 @@ def calculate_inference_cost(prompt_tokens: int, completion_tokens: int, model_n
         float: Estimated cost in USD, rounded to 6 decimal places.
     """
     total_tokens: int = prompt_tokens + completion_tokens
-    cost_per_token: float = LLAMA_3_1_8B_PRICE_PER_MILLION / 1_000_000.0
+    cost_per_token: float = LAGUNA_2_1_PRICE_PER_MILLION / 1_000_000.0
     total_cost: float = total_tokens * cost_per_token
     return round(total_cost, 6)
 

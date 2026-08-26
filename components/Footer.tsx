@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="text-left md:text-right text-white/40 text-[11px]">
           <p>© {new Date().getFullYear()} CONTROLPLANE.AI.</p>
           <p className="mt-1 text-white/60">
-            NVIDIA NIM LLAMA 3.1 8B RUNTIME // ZERO TRUST
+            NVIDIA NIM LAGUNA 2.1 XS RUNTIME // ZERO TRUST
           </p>
         </div>
       </div>

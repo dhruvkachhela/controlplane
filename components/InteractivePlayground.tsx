@@ -519,7 +519,7 @@ export default function InteractivePlayground() {
                 </div>
 
                 <div className="font-mono text-[10px] text-white/40 flex items-center gap-4">
-                  <span>ACTIVE RUNTIME: meta/llama-3.1-8b-instruct</span>
+                  <span>ACTIVE RUNTIME: poolside/laguna-xs-2.1</span>
                   <span>·</span>
                   <span>ENCRYPTION: AES-256 ZERO-LEAK POSTURE</span>
                 </div>
