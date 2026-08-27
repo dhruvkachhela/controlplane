@@ -49,7 +49,7 @@ export default function InteractiveZeroTrustPhilosophy() {
       orangeParticles = [];
 
       cssWidth = container.clientWidth || 1200;
-      cssHeight = Math.max(180, Math.min(380, cssWidth * (cssWidth < 480 ? 0.52 : cssWidth < 768 ? 0.38 : 0.28)));
+      cssHeight = Math.max(220, Math.min(380, cssWidth * (cssWidth < 480 ? 0.64 : cssWidth < 768 ? 0.44 : 0.30)));
       dpr = Math.min(typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1, 2);
 
       canvas.width = Math.floor(cssWidth * dpr);
@@ -72,15 +72,15 @@ export default function InteractiveZeroTrustPhilosophy() {
 
       // Fluid font sizing that fits screen perfectly
       const maxLineLength = 28; // "Verify every agent response."
-      const availWidth = cssWidth * 0.94;
-      const targetFontSize = Math.min(54, Math.max(16, (availWidth / maxLineLength) * 1.65));
+      const availWidth = cssWidth * 0.92;
+      const targetFontSize = Math.min(52, Math.max(16, (availWidth / maxLineLength) * 1.55));
       
       offCtx.font = `900 ${targetFontSize}px 'Outfit', 'Inter', -apple-system, sans-serif`;
 
-      const lineSpacing = targetFontSize * 1.22;
-      const totalTextHeight = lineSpacing * 2.8;
-      const startY = Math.max(targetFontSize * 0.95, (cssHeight - totalTextHeight) / 2 + targetFontSize * 0.85);
-      const paddingLeft = Math.max(8, cssWidth * 0.015);
+      const lineSpacing = targetFontSize * 1.28;
+      const totalTextHeight = lineSpacing * 2.2 + targetFontSize;
+      const startY = Math.max(targetFontSize * 1.05, (cssHeight - totalTextHeight) / 2 + targetFontSize * 0.95);
+      const paddingLeft = Math.max(10, cssWidth * 0.02);
 
       // Render bold lines
       offCtx.fillStyle = "#111111";

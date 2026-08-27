@@ -8,8 +8,8 @@ import InteractiveZeroTrustPhilosophy from "./InteractiveZeroTrustPhilosophy";
 export function StatementOne() {
   return (
     <section className="relative w-full bg-[#F5F2EB] text-black py-14 sm:py-18 px-4 sm:px-8 lg:px-12 border-b border-black/10 overflow-hidden">
-      {/* Background Subtle Watermark Text */}
-      <div className="absolute right-4 bottom-2 font-mono text-[90px] sm:text-[140px] lg:text-[180px] font-black text-black/[0.03] select-none pointer-events-none leading-none tracking-tighter">
+      {/* Background Subtle Watermark Text - Contained cleanly across all viewports */}
+      <div className="absolute right-3 sm:right-6 bottom-2 sm:bottom-4 font-mono text-[36px] xs:text-[48px] sm:text-[100px] lg:text-[140px] font-black text-black/[0.035] select-none pointer-events-none leading-none tracking-tighter">
         0-TRUST
       </div>
 
