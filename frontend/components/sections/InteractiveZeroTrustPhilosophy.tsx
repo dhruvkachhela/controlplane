@@ -21,7 +21,7 @@ export default function InteractiveZeroTrustPhilosophy() {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
-    const ctx = canvas.getContext("2d", { alpha: false });
+    const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -49,7 +49,7 @@ export default function InteractiveZeroTrustPhilosophy() {
       orangeParticles = [];
 
       cssWidth = container.clientWidth || 1200;
-      cssHeight = Math.max(220, Math.min(380, cssWidth * (cssWidth < 480 ? 0.64 : cssWidth < 768 ? 0.44 : 0.30)));
+      cssHeight = Math.max(180, Math.min(380, cssWidth * (cssWidth < 480 ? 0.52 : cssWidth < 768 ? 0.38 : 0.28)));
       dpr = Math.min(typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1, 2);
 
       canvas.width = Math.floor(cssWidth * dpr);
@@ -63,7 +63,7 @@ export default function InteractiveZeroTrustPhilosophy() {
       offCanvas.width = canvas.width;
       offCanvas.height = canvas.height;
 
-      // Fill cream background
+      // Fill background for text sampling
       offCtx.fillStyle = "#F5F2EB";
       offCtx.fillRect(0, 0, offCanvas.width, offCanvas.height);
 
@@ -278,9 +278,8 @@ export default function InteractiveZeroTrustPhilosophy() {
 
       time += 0.03;
 
-      // Fill background
-      ctx.fillStyle = "#F5F2EB";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Transparent clear instead of solid fill so underlying watermark is 100% visible with zero horizontal clipping
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Update shockwaves
       for (let s = shockwaves.length - 1; s >= 0; s--) {
