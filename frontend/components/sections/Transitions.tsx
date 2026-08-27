@@ -7,7 +7,13 @@ import InteractiveZeroTrustPhilosophy from "./InteractiveZeroTrustPhilosophy";
 
 export function StatementOne() {
   return (
-    <section className="relative w-full bg-[#F5F2EB] text-black py-14 sm:py-18 px-4 sm:px-8 lg:px-12 border-b border-black/10 overflow-hidden">
+    <section className="relative w-full bg-[#F5F2EB] text-black py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-12 border-b border-black/10 overflow-hidden">
+      {/* Background Subtle Watermark Text - Contained & Fluid Across All Form Factors */}
+      <div className="absolute inset-x-4 sm:inset-x-8 lg:inset-x-12 bottom-3 sm:bottom-5 lg:bottom-6 flex justify-end items-end pointer-events-none select-none z-0">
+        <span className="font-mono text-[36px] xs:text-[50px] sm:text-[76px] md:text-[100px] lg:text-[135px] xl:text-[160px] font-black text-black/[0.04] leading-none tracking-tighter">
+          0-TRUST
+        </span>
+      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
