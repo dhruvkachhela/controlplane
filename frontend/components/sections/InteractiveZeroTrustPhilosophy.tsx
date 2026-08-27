@@ -323,8 +323,8 @@ export default function InteractiveZeroTrustPhilosophy() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden select-none cursor-crosshair">
-      <canvas ref={canvasRef} className="w-full h-full block touch-none" />
+    <div ref={containerRef} className="relative w-full overflow-hidden select-none cursor-crosshair touch-pan-y">
+      <canvas ref={canvasRef} className="w-full h-full block touch-pan-y" />
     </div>
   );
 }

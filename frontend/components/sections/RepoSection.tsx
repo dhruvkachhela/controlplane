@@ -419,9 +419,7 @@ export default function RepoSection() {
                 >
                   {/* Left File Tree Sidebar */}
                   <div
-                    data-lenis-prevent="true"
-                    onWheel={(e) => e.stopPropagation()}
-                    className="lg:col-span-4 bg-[#0E0E0E] border-b lg:border-b-0 lg:border-r border-white/10 p-3.5 sm:p-6 flex flex-col justify-between overflow-y-auto overscroll-contain max-h-56 lg:max-h-none"
+                    className="lg:col-span-4 bg-[#0E0E0E] border-b lg:border-b-0 lg:border-r border-white/10 p-3.5 sm:p-6 flex flex-col justify-between overflow-y-auto max-h-56 lg:max-h-none touch-pan-y"
                   >
                     <div>
                       <div className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-white/40 mb-3 sm:mb-4 pb-2 border-b border-white/10 flex items-center justify-between">
@@ -489,11 +487,9 @@ export default function RepoSection() {
                       </button>
                     </div>
 
-                    {/* Code Body with Verified Inner Scrolling */}
+                    {/* Code Body with Verified Natural Scrolling and Page Chaining */}
                     <div
-                      data-lenis-prevent="true"
-                      onWheel={(e) => e.stopPropagation()}
-                      className={`p-3.5 sm:p-6 overflow-x-auto overflow-y-auto overscroll-contain touch-pan-y ${
+                      className={`p-3.5 sm:p-6 overflow-x-auto overflow-y-auto touch-pan-y ${
                         isFullscreen ? "h-[78vh] max-h-[78vh]" : "h-[340px] sm:h-[480px] max-h-[480px]"
                       }`}
                       style={{
