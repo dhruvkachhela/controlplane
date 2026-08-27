@@ -78,12 +78,12 @@ export function StatementTwo() {
           className="text-center flex flex-col items-center gap-4 mb-10 max-w-3xl"
         >
           {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 font-mono text-xs uppercase tracking-widest text-white/80 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 font-mono text-[10px] sm:text-xs uppercase tracking-widest text-white/80 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse shadow-[0_0_8px_#FF5500]" />
             <ScrambleText text={`PRODUCTION BENCHMARKS // NVIDIA NIM ${activeModel}`} />
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08]">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08] px-2">
             <span className="text-[#FF5500]">
               <CounterNumber value={38} decimals={0} suffix="% " />
             </span>
@@ -91,25 +91,25 @@ export function StatementTwo() {
             <span className="text-white/70">Zero Data Leakage. 100% Audit Proof.</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-white/75 leading-relaxed font-normal">
+          <p className="text-xs sm:text-sm md:text-base text-white/75 leading-relaxed font-normal max-w-2xl px-2">
             By pairing deterministic PII masking with <strong>NVIDIA NIM {activeModel} small-model routing</strong> and Stage 2 prompt compression, ControlPlane reduces enterprise agent infrastructure bills by <strong>~38%</strong> vs direct frontier model invocation (GPT-4o baseline).
           </p>
         </motion.div>
 
         {/* Reimagined Telemetry & Economics Bento Dashboard */}
-        <div className="w-full max-w-6xl rounded-16 border border-white/15 bg-[#0D0D0D]/90 backdrop-blur-2xl shadow-2xl p-6 sm:p-8 flex flex-col gap-6">
+        <div className="w-full max-w-6xl rounded-12 sm:rounded-16 border border-white/15 bg-[#0D0D0D]/90 backdrop-blur-2xl shadow-2xl p-4 sm:p-6 lg:p-8 flex flex-col gap-5 sm:gap-6">
           {/* Top Row: 3 Core Bento Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
             {/* Bento Card 1: 38% Compute Economics Breakdown (5 Cols) */}
             <motion.div
               whileHover={{ borderColor: "rgba(255,85,0,0.4)" }}
-              className="lg:col-span-5 p-6 rounded-12 border border-white/10 bg-[#121212] flex flex-col justify-between gap-5 transition-colors"
+              className="lg:col-span-5 p-4 sm:p-6 rounded-12 border border-white/10 bg-[#121212] flex flex-col justify-between gap-4 sm:gap-5 transition-colors"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-white/50 font-bold">
+                <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-white/50 font-bold">
                   // COMPUTE ECONOMICS
                 </span>
-                <span className="font-mono text-[11px] text-[#FF5500] font-bold">
+                <span className="font-mono text-[10px] sm:text-[11px] text-[#FF5500] font-bold">
                   SAVE ~38%
                 </span>
               </div>
@@ -134,7 +134,7 @@ export function StatementTwo() {
 
                   <div>
                     <div className="flex justify-between font-mono text-[10px] text-[#FF5500] mb-1 font-bold">
-                      <span>CONTROLPLANE + LAGUNA 2.1</span>
+                      <span>CONTROLPLANE + {activeModel}</span>
                       <span>$0.00357 / query</span>
                     </div>
                     <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
@@ -153,10 +153,10 @@ export function StatementTwo() {
             {/* Bento Card 2: 58/58 Security Evaluation Grid (4 Cols) */}
             <motion.div
               whileHover={{ borderColor: "rgba(255,85,0,0.6)" }}
-              className="lg:col-span-4 p-6 rounded-12 border border-[#FF5500]/40 bg-[#141210] flex flex-col justify-between gap-5 transition-colors shadow-[0_0_20px_rgba(255,85,0,0.1)]"
+              className="lg:col-span-4 p-4 sm:p-6 rounded-12 border border-[#FF5500]/40 bg-[#141210] flex flex-col justify-between gap-4 sm:gap-5 transition-colors shadow-[0_0_20px_rgba(255,85,0,0.1)]"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-white/60 font-bold">
+                <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-white/60 font-bold">
                   // TEST EVALUATION GATES
                 </span>
                 <span className="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse" />
@@ -191,10 +191,10 @@ export function StatementTwo() {
             {/* Bento Card 3: Speed & Audit Evidence (3 Cols) */}
             <motion.div
               whileHover={{ borderColor: "rgba(255,255,255,0.3)" }}
-              className="lg:col-span-3 p-6 rounded-12 border border-white/10 bg-[#121212] flex flex-col justify-between gap-5 transition-colors"
+              className="lg:col-span-3 p-4 sm:p-6 rounded-12 border border-white/10 bg-[#121212] flex flex-col justify-between gap-4 sm:gap-5 transition-colors"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-white/50 font-bold">
+                <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-white/50 font-bold">
                   // FIREWALL SPEED
                 </span>
                 <span className="font-mono text-[10px] text-white/50">SUB-MS</span>
@@ -223,13 +223,13 @@ export function StatementTwo() {
           </div>
 
           {/* Bottom Row: 5-Stage Interactive Telemetry Ribbon */}
-          <div className="border-t border-white/10 pt-5">
+          <div className="border-t border-white/10 pt-4 sm:pt-5">
             <div className="flex items-center justify-between mb-3 font-mono text-[10px] uppercase text-white/50 tracking-wider">
               <span>// 5-STAGE ZERO-TRUST TELEMETRY CHAIN:</span>
-              <span className="text-[#FF5500] font-bold">HOVER STAGES TO INSPECT</span>
+              <span className="text-[#FF5500] font-bold hidden sm:inline">HOVER STAGES TO INSPECT</span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5">
               {stages.map((st, i) => {
                 const isHov = hoveredStage === i;
                 return (
@@ -241,7 +241,9 @@ export function StatementTwo() {
                       scale: isHov ? 1.02 : 1,
                       borderColor: isHov ? "rgba(255,85,0,0.8)" : "rgba(255,255,255,0.1)",
                     }}
-                    className={`p-3 rounded-8 border transition-all cursor-pointer ${
+                    className={`p-2.5 sm:p-3 rounded-8 border transition-all cursor-pointer ${
+                      st.num === "05" ? "col-span-2 sm:col-span-1" : ""
+                    } ${
                       isHov ? "bg-[#181512] shadow-[0_0_15px_rgba(255,85,0,0.2)]" : "bg-white/[0.03]"
                     }`}
                   >
@@ -249,7 +251,7 @@ export function StatementTwo() {
                       <span className="text-white/40">{st.num}</span>
                       <span className="text-[#FF5500] font-bold">{st.metric}</span>
                     </div>
-                    <div className="font-bold text-xs font-mono text-white mt-1">{st.name}</div>
+                    <div className="font-bold text-xs font-mono text-white mt-1 truncate">{st.name}</div>
                     <div className="text-[10px] text-white/50 font-mono mt-1 truncate">{st.desc}</div>
                   </motion.div>
                 );

@@ -355,14 +355,14 @@ export default function RepoSection() {
             }`}
           >
             {/* macOS Window Top Title Bar */}
-            <div className="bg-[#181818] border-b border-white/10 px-4 py-3 flex items-center justify-between select-none">
+            <div className="bg-[#181818] border-b border-white/10 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between select-none">
               {/* macOS Traffic Lights (Exit, Minimize, Fullscreen) */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 {/* Red: Close / Exit */}
                 <button
                   onClick={handleClose}
                   title="Close Window (Exit)"
-                  className="w-3 h-3 rounded-full bg-[#FF5F56] hover:brightness-110 active:brightness-90 transition-all cursor-pointer flex items-center justify-center group"
+                  className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#FF5F56] hover:brightness-110 active:brightness-90 transition-all cursor-pointer flex items-center justify-center group"
                 >
                   <span className="opacity-0 group-hover:opacity-100 text-[8px] text-black font-bold">
                     ✕
@@ -373,7 +373,7 @@ export default function RepoSection() {
                 <button
                   onClick={handleMinimize}
                   title={isFullscreen ? "Restore Default Screen Size" : isMinimized ? "Restore Window" : "Minimize Window"}
-                  className="w-3 h-3 rounded-full bg-[#FFBD2E] hover:brightness-110 active:brightness-90 transition-all cursor-pointer flex items-center justify-center group"
+                  className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#FFBD2E] hover:brightness-110 active:brightness-90 transition-all cursor-pointer flex items-center justify-center group"
                 >
                   <span className="opacity-0 group-hover:opacity-100 text-[8px] text-black font-bold">
                     −
@@ -384,7 +384,7 @@ export default function RepoSection() {
                 <button
                   onClick={handleFullscreen}
                   title={isFullscreen ? "Exit Fullscreen (or press Esc)" : "Enter Fullscreen Mode"}
-                  className="w-3 h-3 rounded-full bg-[#27C93F] hover:brightness-110 active:brightness-90 transition-all cursor-pointer flex items-center justify-center group"
+                  className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#27C93F] hover:brightness-110 active:brightness-90 transition-all cursor-pointer flex items-center justify-center group"
                 >
                   <span className="opacity-0 group-hover:opacity-100 text-[7px] text-black font-bold">
                     ⤢
@@ -393,17 +393,17 @@ export default function RepoSection() {
               </div>
 
               {/* Center Window Title */}
-              <div className="font-mono text-[11px] text-white/50 uppercase tracking-widest flex items-center gap-2">
-                <span>controlplane-core // {selectedFile.name}</span>
+              <div className="font-mono text-[10px] sm:text-[11px] text-white/50 uppercase tracking-widest flex items-center gap-1.5 sm:gap-2 truncate max-w-[170px] xs:max-w-[240px] sm:max-w-none px-2">
+                <span className="truncate">controlplane // {selectedFile.name}</span>
                 {isFullscreen && (
-                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-white/10 text-white font-bold">
-                    FULLSCREEN MODE [ESC]
+                  <span className="hidden sm:inline text-[9px] px-1.5 py-0.2 rounded bg-white/10 text-white font-bold">
+                    FULLSCREEN [ESC]
                   </span>
                 )}
               </div>
 
               {/* Right State Indicator */}
-              <div className="font-mono text-[10px] text-white/40">
+              <div className="font-mono text-[9px] sm:text-[10px] text-white/40 shrink-0">
                 {isFullscreen ? "EXPANDED" : isMinimized ? "MINIMIZED" : "ACTIVE"}
               </div>
             </div>
@@ -421,37 +421,37 @@ export default function RepoSection() {
                   <div
                     data-lenis-prevent="true"
                     onWheel={(e) => e.stopPropagation()}
-                    className="lg:col-span-4 bg-[#0E0E0E] border-b lg:border-b-0 lg:border-r border-white/10 p-4 sm:p-6 flex flex-col justify-between overflow-y-auto overscroll-contain"
+                    className="lg:col-span-4 bg-[#0E0E0E] border-b lg:border-b-0 lg:border-r border-white/10 p-3.5 sm:p-6 flex flex-col justify-between overflow-y-auto overscroll-contain max-h-56 lg:max-h-none"
                   >
                     <div>
-                      <div className="font-mono text-[11px] uppercase tracking-widest text-white/40 mb-4 pb-2 border-b border-white/10 flex items-center justify-between">
+                      <div className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-white/40 mb-3 sm:mb-4 pb-2 border-b border-white/10 flex items-center justify-between">
                         <span>FILES // EXPLORER</span>
                         <span className="text-white font-bold">58/58 PASS</span>
                       </div>
 
-                      <div className="space-y-1.5">
+                      <div className="space-y-1 sm:space-y-1.5">
                         {FILES.map((file) => {
                           const isSelected = selectedFile.path === file.path;
                           return (
                             <button
                               key={file.path}
                               onClick={() => setSelectedFile(file)}
-                              className={`w-full text-left p-3 rounded font-mono text-xs transition-all flex items-center justify-between cursor-pointer ${
+                              className={`w-full text-left p-2.5 sm:p-3 rounded font-mono text-xs transition-all flex items-center justify-between cursor-pointer ${
                                 isSelected
                                   ? "bg-white text-black font-bold shadow-md"
                                   : "text-white/70 hover:text-white hover:bg-white/5"
                               }`}
                             >
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-2 truncate">
                                 <span
-                                  className={`w-1.5 h-1.5 rounded-full ${
+                                  className={`w-1.5 h-1.5 rounded-full shrink-0 ${
                                     isSelected ? "bg-[#FF5500]" : "bg-white/30"
                                   }`}
                                 />
-                                <span>{file.name}</span>
+                                <span className="truncate">{file.name}</span>
                               </div>
                               <span
-                                className={`text-[9px] px-1.5 py-0.5 rounded tracking-widest ${
+                                className={`text-[9px] px-1.5 py-0.5 rounded tracking-widest shrink-0 ${
                                   isSelected ? "bg-black/10 text-black" : "bg-white/5 text-white/40"
                                 }`}
                               >
@@ -463,7 +463,7 @@ export default function RepoSection() {
                       </div>
                     </div>
 
-                    <div className="mt-6 pt-3 border-t border-white/10 font-mono text-[10px] text-white/40 uppercase tracking-wider flex items-center justify-between">
+                    <div className="mt-4 lg:mt-6 pt-2.5 sm:pt-3 border-t border-white/10 font-mono text-[9px] sm:text-[10px] text-white/40 uppercase tracking-wider flex items-center justify-between">
                       <span>RUNTIME: PYTHON 3.11+</span>
                       <span className="text-white font-bold">NVIDIA NIM</span>
                     </div>
@@ -472,18 +472,18 @@ export default function RepoSection() {
                   {/* Right Code Viewer */}
                   <div className="lg:col-span-8 bg-[#0A0A0A] flex flex-col">
                     {/* Top Code Bar */}
-                    <div className="p-3.5 sm:p-4 bg-[#141414] border-b border-white/10 flex items-center justify-between gap-4 font-mono text-xs">
-                      <div className="flex items-center gap-2 text-white/80">
+                    <div className="p-3 sm:p-4 bg-[#141414] border-b border-white/10 flex items-center justify-between gap-2 sm:gap-4 font-mono text-xs">
+                      <div className="flex items-center gap-1.5 sm:gap-2 text-white/80 truncate">
                         <span className="text-[#FF5500] font-bold">//</span>
-                        <span>{selectedFile.path}</span>
-                        <span className="hidden sm:inline text-white/40 text-[11px]">
+                        <span className="truncate">{selectedFile.path}</span>
+                        <span className="hidden md:inline text-white/40 text-[11px] truncate">
                           — {selectedFile.description}
                         </span>
                       </div>
 
                       <button
                         onClick={handleCopy}
-                        className="px-3.5 py-1 rounded bg-white/5 border border-white/15 text-white/80 hover:text-white hover:border-white/40 text-xs uppercase tracking-wider transition-all cursor-pointer shadow-sm active:scale-95"
+                        className="px-2.5 sm:px-3.5 py-1 rounded bg-white/5 border border-white/15 text-white/80 hover:text-white hover:border-white/40 text-[10px] sm:text-xs uppercase tracking-wider transition-all cursor-pointer shadow-sm active:scale-95 shrink-0"
                       >
                         {copied ? "COPIED ✓" : "COPY CODE"}
                       </button>
@@ -493,15 +493,15 @@ export default function RepoSection() {
                     <div
                       data-lenis-prevent="true"
                       onWheel={(e) => e.stopPropagation()}
-                      className={`p-5 sm:p-6 overflow-x-auto overflow-y-auto overscroll-contain touch-pan-y ${
-                        isFullscreen ? "h-[78vh] max-h-[78vh]" : "h-[480px] max-h-[480px]"
+                      className={`p-3.5 sm:p-6 overflow-x-auto overflow-y-auto overscroll-contain touch-pan-y ${
+                        isFullscreen ? "h-[78vh] max-h-[78vh]" : "h-[340px] sm:h-[480px] max-h-[480px]"
                       }`}
                       style={{
                         scrollbarWidth: "thin",
                         scrollbarColor: "rgba(255, 85, 0, 0.4) transparent",
                       }}
                     >
-                      <pre className="font-mono text-xs sm:text-[13px] text-white/85 leading-relaxed">
+                      <pre className="font-mono text-[11px] sm:text-[13px] text-white/85 leading-relaxed break-normal whitespace-pre">
                         <code>{selectedFile.code}</code>
                       </pre>
                     </div>

@@ -8,19 +8,19 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#070707] text-white/70 py-12 px-4 sm:px-8 lg:px-12 border-t border-white/10 font-mono text-xs">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <footer className="w-full bg-[#070707] text-white/70 py-10 sm:py-12 px-4 sm:px-8 lg:px-12 border-t border-white/10 font-mono text-xs">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8">
         <div>
-          <div className="flex items-center gap-2 font-bold text-white uppercase tracking-wider mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse" />
+          <div className="flex items-center gap-2 font-bold text-white uppercase tracking-wider mb-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse shadow-[0_0_8px_#FF5500]" />
             <span>CONTROLPLANE.AI</span>
           </div>
-          <p className="text-white/40 max-w-sm font-sans text-xs">
+          <p className="text-white/40 max-w-sm font-sans text-xs leading-relaxed">
             Enterprise Zero-Trust Guardrail Engine for Autonomous AI Agents. Built for Hackathon 2026.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-6 sm:gap-8 uppercase tracking-widest text-[11px]">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-8 uppercase tracking-widest text-[10px] sm:text-[11px]">
           <a href="#interactive" className="hover:text-white transition-colors">
             PLAYGROUND
           </a>
@@ -39,10 +39,10 @@ export default function Footer() {
           </button>
         </div>
 
-        <div className="text-left md:text-right text-white/40 text-[11px]">
+        <div className="text-left md:text-right text-white/40 text-[10px] sm:text-[11px]">
           <p>© {new Date().getFullYear()} CONTROLPLANE.AI.</p>
           <p className="mt-1 text-white/60">
-            NVIDIA NIM LAGUNA 2.1 XS RUNTIME // ZERO TRUST
+            NVIDIA NIM ZERO-TRUST RUNTIME // ENTERPRISE SECURED
           </p>
         </div>
       </div>

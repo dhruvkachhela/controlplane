@@ -543,7 +543,7 @@ export default function InteractivePlayground() {
           </AnimatePresence>
 
           {/* Input & Execution Gateway */}
-          <div className="p-6 sm:p-8 space-y-4">
+          <div className="p-4 sm:p-6 lg:p-8 space-y-4">
             <label className="block font-mono text-xs uppercase tracking-wider text-white/60">
               Query Prompt (Editable):
             </label>
@@ -551,18 +551,18 @@ export default function InteractivePlayground() {
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
               rows={3}
-              className="w-full rounded bg-[#0A0A0A] border border-white/15 p-4 font-mono text-xs sm:text-sm text-white focus:outline-none focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500]/40 transition-all leading-relaxed"
+              className="w-full rounded bg-[#0A0A0A] border border-white/15 p-3.5 sm:p-4 font-mono text-xs sm:text-sm text-white focus:outline-none focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500]/40 transition-all leading-relaxed"
               placeholder="Type or customize your test prompt..."
             />
 
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
               <span className="font-mono text-[11px] text-ghost-grey">
                 POSTURE: <strong className="text-white">{currentPreset.category}</strong>
               </span>
               <button
                 onClick={handleExecute}
                 disabled={isRunning || !inputQuery.trim()}
-                className="px-7 py-3.5 rounded bg-white text-black font-mono text-xs uppercase tracking-widest font-bold hover:bg-[#FF5500] hover:text-white hover:scale-105 active:scale-95 disabled:opacity-50 transition-all shadow-lg cursor-pointer flex items-center gap-2 group"
+                className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-3.5 rounded bg-white text-black font-mono text-xs uppercase tracking-widest font-bold hover:bg-[#FF5500] hover:text-white hover:scale-105 active:scale-95 disabled:opacity-50 transition-all shadow-lg cursor-pointer flex items-center justify-center gap-2 group"
               >
                 {isRunning ? (
                   <>
@@ -586,7 +586,7 @@ export default function InteractivePlayground() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="border-t border-white/10 bg-[#0E0E0E] p-6 sm:p-8 space-y-6"
+                className="border-t border-white/10 bg-[#0E0E0E] p-4 sm:p-6 lg:p-8 space-y-6"
               >
                 {/* 5-Stage Animated Stepper Cards */}
                 <div>
@@ -596,7 +596,7 @@ export default function InteractivePlayground() {
                       {isRunning ? `PROCESSING STAGE ${activeStep}/5` : "COMPLETED"}
                     </span>
                   </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
                     {[
                       { num: 1, label: "PROTECT", badge: activeDisplay.riskTier === "HIGH" ? "[ BLOCKED ]" : "[ PASSED ]", isErr: activeDisplay.riskTier === "HIGH" },
                       { num: 2, label: "PREPARE", badge: activeDisplay.riskTier === "HIGH" ? "[ SKIPPED ]" : activeDisplay.expectedStatus === "ESCALATED" ? "[ ESCALATED ]" : "[ PASSED ]", isErr: false },
@@ -613,7 +613,7 @@ export default function InteractivePlayground() {
                             scale: isActive ? 1.04 : 1,
                             borderColor: isActive ? "rgba(255,85,0,0.9)" : isDone ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)",
                           }}
-                          className={`p-3.5 rounded border transition-all ${st.isErr
+                          className={`p-3 sm:p-3.5 rounded border transition-all ${st.num === 5 ? "col-span-2 sm:col-span-1" : ""} ${st.isErr
                               ? "border-[#FF5500]/50 bg-[#FF5500]/10 text-[#FF5500]"
                               : isActive
                                 ? "bg-[#FF5500]/10 shadow-[0_0_15px_rgba(255,85,0,0.3)] text-white"
@@ -623,7 +623,7 @@ export default function InteractivePlayground() {
                             }`}
                         >
                           <div className="font-mono text-[10px] uppercase text-white/40">Stage 0{st.num}</div>
-                          <div className="font-bold text-xs mt-0.5">{st.label}</div>
+                          <div className="font-bold text-xs mt-0.5 truncate">{st.label}</div>
                           <div className="font-mono text-[10px] mt-2 text-white/60">
                             {isDone ? st.badge : "[ PENDING ]"}
                           </div>
@@ -634,7 +634,7 @@ export default function InteractivePlayground() {
                 </div>
 
                 {/* Delivered Response Box with Typewriter Effect */}
-                <div className="rounded-6 border border-white/15 bg-[#141414] p-5 shadow-inner">
+                <div className="rounded-6 border border-white/15 bg-[#141414] p-4 sm:p-5 shadow-inner">
                   <div className="flex items-center justify-between font-mono text-[11px] text-white/50 mb-2">
                     <span>DELIVERED SAFE OUTPUT:</span>
                     <span
@@ -646,7 +646,7 @@ export default function InteractivePlayground() {
                       {activeDisplay.expectedStatus}
                     </span>
                   </div>
-                  <div className="text-sm font-mono text-white/90 leading-relaxed min-h-[48px] whitespace-pre-wrap">
+                  <div className="text-xs sm:text-sm font-mono text-white/90 leading-relaxed min-h-[48px] whitespace-pre-wrap break-words overflow-x-auto">
                     {typedOutput}
                     {hasRun && typedOutput.length < activeDisplay.deliveredOutput.length && (
                       <span className="inline-block w-1.5 h-4 bg-[#FF5500] ml-1 animate-pulse" />
@@ -656,58 +656,58 @@ export default function InteractivePlayground() {
 
                 {/* Telemetry Tabs */}
                 <div>
-                  <div className="flex gap-4 border-b border-white/10 pb-2 mb-3 font-mono text-xs">
+                  <div className="flex flex-wrap gap-2 sm:gap-4 border-b border-white/10 pb-2 mb-3 font-mono text-xs">
                     <button
                       onClick={() => setActiveTab("mask")}
-                      className={`cursor-pointer transition-colors ${activeTab === "mask" ? "text-white font-bold border-b-2 border-[#FF5500]" : "text-white/40 hover:text-white"
+                      className={`cursor-pointer transition-colors px-2 py-1 ${activeTab === "mask" ? "text-white font-bold border-b-2 border-[#FF5500]" : "text-white/40 hover:text-white"
                         }`}
                     >
                       MASKED PAYLOAD
                     </button>
                     <button
                       onClick={() => setActiveTab("critic")}
-                      className={`cursor-pointer transition-colors ${activeTab === "critic" ? "text-white font-bold border-b-2 border-[#FF5500]" : "text-white/40 hover:text-white"
+                      className={`cursor-pointer transition-colors px-2 py-1 ${activeTab === "critic" ? "text-white font-bold border-b-2 border-[#FF5500]" : "text-white/40 hover:text-white"
                         }`}
                     >
                       CRITIC LOG
                     </button>
                     <button
                       onClick={() => setActiveTab("telemetry")}
-                      className={`cursor-pointer transition-colors ${activeTab === "telemetry" ? "text-white font-bold border-b-2 border-[#FF5500]" : "text-white/40 hover:text-white"
+                      className={`cursor-pointer transition-colors px-2 py-1 ${activeTab === "telemetry" ? "text-white font-bold border-b-2 border-[#FF5500]" : "text-white/40 hover:text-white"
                         }`}
                     >
                       ECONOMICS & SPEED
                     </button>
                   </div>
 
-                  <div className="font-mono text-xs text-white/80 bg-black/40 p-4 rounded border border-white/10">
+                  <div className="font-mono text-xs text-white/80 bg-black/40 p-3.5 sm:p-4 rounded border border-white/10 overflow-x-auto break-words">
                     {activeTab === "mask" && (
                       <div>
                         <div className="text-white/40 text-[10px] mb-1">SANITIZED INPUT (STAGE 1):</div>
-                        <p>{activeDisplay.maskedQuery}</p>
+                        <p className="whitespace-pre-wrap break-words">{activeDisplay.maskedQuery}</p>
                       </div>
                     )}
                     {activeTab === "critic" && (
                       <div>
                         <div className="text-white/40 text-[10px] mb-1">VERIFICATION CRITIC AUDIT:</div>
-                        <p>{activeDisplay.criticLog}</p>
+                        <p className="whitespace-pre-wrap break-words">{activeDisplay.criticLog}</p>
                       </div>
                     )}
                     {activeTab === "telemetry" && (
-                      <div className="grid grid-cols-3 gap-4 text-center">
-                        <div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center">
+                        <div className="p-2 sm:p-0 bg-white/[0.02] sm:bg-transparent rounded">
                           <div className="text-white/40 text-[10px]">LATENCY</div>
                           <div className="text-sm font-bold text-white mt-1">
                             <CounterNumber value={activeDisplay.latency} decimals={3} suffix="s" />
                           </div>
                         </div>
-                        <div>
+                        <div className="p-2 sm:p-0 bg-white/[0.02] sm:bg-transparent rounded">
                           <div className="text-white/40 text-[10px]">TOKENS CONSUMED</div>
                           <div className="text-sm font-bold text-white mt-1">
                             <CounterNumber value={activeDisplay.tokens.total} suffix=" tok" />
                           </div>
                         </div>
-                        <div>
+                        <div className="p-2 sm:p-0 bg-white/[0.02] sm:bg-transparent rounded">
                           <div className="text-white/40 text-[10px]">COST SAVINGS</div>
                           <div className="text-sm font-bold text-white mt-1">
                             <CounterNumber value={activeDisplay.savingsPct} decimals={1} suffix="%" />

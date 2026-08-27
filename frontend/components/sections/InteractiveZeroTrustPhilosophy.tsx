@@ -26,8 +26,11 @@ export default function InteractiveZeroTrustPhilosophy() {
 
     let animationFrameId: number;
     let isVisible = true;
+
+    const calcHeight = (w: number) => Math.max(160, Math.min(380, w * (w < 480 ? 0.46 : w < 768 ? 0.36 : 0.28)));
+
     let width = (canvas.width = container.clientWidth || 1200);
-    let height = (canvas.height = Math.max(260, Math.min(380, width * 0.30)));
+    let height = (canvas.height = calcHeight(width));
 
     const chars = "CONTROLPLANEZERO-TRUST0123456789·";
     let blackParticles: Particle[] = [];
@@ -59,14 +62,14 @@ export default function InteractiveZeroTrustPhilosophy() {
       offCtx.fillStyle = "#F5F2EB";
       offCtx.fillRect(0, 0, targetW, targetH);
 
-      // Render bold statement headlines
-      const fontSize = Math.max(28, Math.min(58, targetW * 0.05));
+      // Render bold statement headlines with fluid responsive font scaling
+      const fontSize = Math.min(54, Math.max(15, (targetW * 0.94) / 18.5));
       offCtx.font = `900 ${fontSize}px 'Outfit', 'Inter', -apple-system, sans-serif`;
 
-      const lineSpacing = fontSize * 1.18;
+      const lineSpacing = fontSize * 1.25;
       const totalTextHeight = lineSpacing * 2.8;
       const startY = Math.max(fontSize * 0.95, (targetH - totalTextHeight) / 2 + fontSize * 0.9);
-      const paddingLeft = Math.max(8, targetW * 0.015);
+      const paddingLeft = Math.max(6, targetW * 0.015);
 
       // Line 1 & 2: Deep Black
       offCtx.fillStyle = "#111111";
@@ -79,7 +82,7 @@ export default function InteractiveZeroTrustPhilosophy() {
 
       // Balanced sampling step for ultra-crisp typography at 60 FPS
       const imgData = offCtx.getImageData(0, 0, targetW, targetH).data;
-      const step = width < 640 ? 4.6 : 3.6;
+      const step = width < 480 ? 4.8 : width < 768 ? 4.2 : 3.6;
       let charIdx = 0;
 
       for (let y = 0; y < targetH; y += step) {
@@ -138,7 +141,7 @@ export default function InteractiveZeroTrustPhilosophy() {
       resizeTimer = setTimeout(() => {
         if (!container || !canvas) return;
         width = canvas.width = container.clientWidth;
-        height = canvas.height = Math.max(260, Math.min(380, width * 0.30));
+        height = canvas.height = calcHeight(width);
         rasterizeAndInit();
       }, 150);
     };
