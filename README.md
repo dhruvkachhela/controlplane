@@ -17,7 +17,7 @@
 ### The 3 Enterprise AI Bottlenecks Solved:
 1. **Privacy & Secret Leakage**: Prevents sensitive customer PII and API credentials from reaching third-party foundation models.
 2. **Adversarial Exploitation**: Stops prompt injection, credential theft, and unauthorized transactions before LLM invocation.
-3. **Runaway Compute Costs**: Reduces token expenditure by **84.4% blended savings** (up to 98% per query) by leveraging governed Small Language Models (`poolside/laguna-xs-2.1`) instead of expensive frontier models.
+3. **Runaway Compute Costs**: Reduces token expenditure by **~38% blended savings** by leveraging governed Small Language Models (`poolside/laguna-xs-2.1`) instead of expensive frontier models (GPT-4o at $2.50/$10.00 per 1M tokens).
 
 ---
 
@@ -168,33 +168,23 @@ print("Net Compute Savings:", f"{result.cost_savings_pct:.1f}%")
 
 ```text
 controlplane/
-├── .streamlit/
-│   └── config.toml                  # Streamlit dark theme & toolbar settings
-├── src/
-│   └── controlplane/
-│       ├── __init__.py              # Package version definition
-│       ├── config.py                # Pydantic Settings & multi-path .env loader
-│       ├── models.py                # Core Pydantic schemas (FinalOutput, RiskAssessment)
-│       ├── pipeline.py              # 5-Stage synchronous orchestration engine
-│       ├── agent_interface.py       # NVIDIA NIM Llama 3.1 8B HTTP interface & token cost model
-│       ├── axi_bridge.py            # Hardware acceleration architectural stub
-│       ├── sampling.py              # Dynamic sampling modulator stub
-│       ├── protect/
-│       │   ├── pii_mask.py          # PII/Secret tokenization & Shannon entropy calculation
-│       │   └── risk_classifier.py   # Deterministic risk classifier & prompt injection gate
-│       ├── prepare/
-│       │   ├── context_check.py     # Context sufficiency & grammar analysis engine
-│       │   └── query_rewrite.py     # Fluff compressor & tool schema injector
-│       ├── validate/
-│       │   ├── critic.py            # Factual grounding & hallucination evaluator agent
-│       │   └── bias_checker.py      # Fairness, stereotype & policy checker agent
-│       ├── respond/
-│       │   └── decrypt.py           # Cryptographic in-memory token restoration
-│       └── utils/
-│           └── logger.py            # Structured system logger
+├── app/                             # Next.js App Router (Landing page & API)
+│   ├── api/pipeline/route.ts        # Pure live NVIDIA NIM Laguna 2.1 XS execution
+│   ├── globals.css                  # Hardware-accelerated styles & design tokens
+│   ├── layout.tsx                   # Root layout with Geist typography
+│   └── page.tsx                     # Landing page layout
+├── components/                      # Modular React UI Components
+│   ├── layout/                      # Navbar, Footer, LenisProvider, PaperTexture
+│   ├── hero/                        # Hero, Spiral
+│   ├── sections/                    # Transitions, InteractivePlayground, RepoSection...
+│   └── ui/                          # AnimatedText, MatrixTextBackground...
+├── docs/                            # Executive Documentation & Diagrams
+│   ├── ControlPlane_AI_Documentation.pdf # Technical documentation PDF
+│   ├── TECHNICAL_DOCUMENTATION.md   # Architectural whitepaper
+│   ├── architecture_diagram.png     # Vector architecture diagram
+│   └── generate_documentation_pdf.py# PDF generator script
+├── src/controlplane/                # Core Python Zero-Trust SDK & Pipeline
 ├── tests/                           # 58 pytest unit, integration, and E2E tests
-├── generate_documentation_pdf.py    # Publication-grade executive PDF generator
-├── ControlPlane_AI_Documentation.pdf # Generated technical documentation PDF
 ├── streamlit_app.py                 # Executive Streamlit user dashboard
 └── pyproject.toml                   # Build system & package metadata
 ```

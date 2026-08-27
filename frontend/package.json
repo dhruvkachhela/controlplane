@@ -1,17 +1,12 @@
 {
-  "name": "controlplane-enterprise",
+  "name": "content-architecture",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "frontend"
-  ],
   "scripts": {
-    "dev": "npm run dev --prefix frontend",
-    "build": "npm run build --prefix frontend",
-    "start": "npm run start --prefix frontend",
-    "lint": "npm run lint --prefix frontend",
-    "backend:test": "cd backend && pytest tests/",
-    "backend:dashboard": "cd backend && streamlit run streamlit_app.py"
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint"
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
